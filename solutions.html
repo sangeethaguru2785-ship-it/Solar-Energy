@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Solutions | Stackly</title>
+    <meta name="description" content="Explore Stackly solar solutions - home solar bundles, battery backup, commercial programs, EV hubs, off-grid kits and community solar gardens. Estimate your savings instantly.">
+    <meta name="theme-color" content="#0F2E1D">
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23FFC93C'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%230F2E1D'/%3E%3Cg stroke='%23fff' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M32 6v8M32 50v8M6 32h8M50 32h8M14 14l6 6M44 44l6 6M50 14l-6 6M20 44l-6 6'/%3E%3C/g%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="Stackly home">
+                <span class="logo-mark"><img src="images/logo.png" alt="Stackly logo" width="42" height="42" loading="eager"></span>
+            </a>
+            <nav class="desktop-nav" aria-label="Primary navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="solutions.html" class="active">Solutions</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="benefits.html">Benefits</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <a href="login.html" class="btn btn-login">Login</a>
+                <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="solutions.html" class="active">Solutions</a></li>
+            <li><a href="projects.html">Projects</a></li>
+
+            <li><a href="benefits.html">Benefits</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html" class="mobile-quote-btn">Get a Free Quote</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section class="page-hero" style="--ph-img: url('images/hero-sun-flare.jpg');">
+            <div class="container">
+                <nav class="breadcrumbs" aria-label="Breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span class="current">Solutions</span>
+                </nav>
+                <h1 class="page-title">A Solar Solution for<br>Every Way You Live</h1>
+                <p class="page-sub">Six pre-engineered ecosystems - each customizable to your roof, your budget and your appetite for independence.</p>
+            </div>
+        </section>
+
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header text-center fade-up">
+                    <span class="section-eyebrow mx-auto">Explore Solutions</span>
+                    <h2 class="section-title">Pick Your Power Path</h2>
+                    <p style="max-width: 620px;" class="mx-auto">Click any card to see full specifications, features and what's included.</p>
+                </div>
+
+                <div class="filter-bar tech-nav fade-up" data-filter-group="solGrid" role="tablist" aria-label="Solution filters">
+                    <button class="tech-tab active" data-filter="all" aria-selected="true">All Solutions</button>
+                    <button class="tech-tab" data-filter="residential" aria-selected="false">Residential</button>
+                    <button class="tech-tab" data-filter="commercial" aria-selected="false">Commercial</button>
+                    <button class="tech-tab" data-filter="storage" aria-selected="false">Storage &amp; Off-Grid</button>
+                    <button class="tech-tab" data-filter="ev" aria-selected="false">EV &amp; Mobility</button>
+                </div>
+
+                <div class="grid-3" id="solGrid">
+                    <article class="sol-card fade-up" id="sol-residential" data-category="residential" data-solution="sol-residential">
+                        <div class="sol-media">
+                            <img src="images/modern-home.jpg" alt="Modern home with solar bundle" loading="lazy" decoding="async">
+                            <span class="sol-tag">Residential</span>
+                        </div>
+                        <div class="sol-body">
+                            <h3>Home Solar Bundle</h3>
+                            <p>The complete rooftop ecosystem: premium black panels, hybrid inverter and app control that erases your bill.</p>
+                            <div class="spec-row">
+                                <span class="spec"><i class="fa-solid fa-bolt"></i>4-12 kW</span>
+                                <span class="spec"><i class="fa-solid fa-piggy-bank"></i>5-7 yr payback</span>
+                            </div>
+                        </div>
+                        <span class="sol-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                    </article>
+
+                    <article class="sol-card fade-up" id="sol-storage" data-category="storage" data-solution="sol-storage" data-delay="0.05">
+                        <div class="sol-media">
+                            <img src="images/battery-wall.jpg" alt="Lithium battery wall storage" loading="lazy" decoding="async">
+                            <span class="sol-tag">Storage</span>
+                        </div>
+                        <div class="sol-body">
+                            <h3>Solar + Battery Backup</h3>
+                            <p>Wall-mounted lithium reservoirs with blackout-fast switchover - your nights and outages, fully covered.</p>
+                            <div class="spec-row">
+                                <span class="spec"><i class="fa-solid fa-battery-full"></i>10-40 kWh</span>
+                                <span class="spec"><i class="fa-solid fa-plug-circle-bolt"></i>10 ms switch</span>
+                            </div>
+                        </div>
+                        <span class="sol-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                    </article>
+
+                    <article class="sol-card fade-up" id="sol-commercial" data-category="commercial" data-solution="sol-commercial" data-delay="0.1">
+                        <div class="sol-media">
+                            <img src="images/hero-solar-aerial.jpg" alt="Commercial rooftop solar program" loading="lazy" decoding="async">
+                            <span class="sol-tag t-orange">Commercial</span>
+                        </div>
+                        <div class="sol-body">
+                            <h3>Business Rooftop Program</h3>
+                            <p>Megawatt-scale arrays with zero-capex options. We handle engineering, incentives and interconnection.</p>
+                            <div class="spec-row">
+                                <span class="spec"><i class="fa-solid fa-industry"></i>50 kW - 5 MW</span>
+                                <span class="spec"><i class="fa-solid fa-percent"></i>30% ITC filed</span>
+                            </div>
+                        </div>
+                        <span class="sol-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                    </article>
+
+                    <article class="sol-card fade-up" id="sol-ev" data-category="ev" data-solution="sol-ev">
+                        <div class="sol-media">
+                            <img src="images/ev-charging.jpg" alt="Solar powered EV charging hub" loading="lazy" decoding="async">
+                            <span class="sol-tag t-dark">Mobility</span>
+                        </div>
+                        <div class="sol-body">
+                            <h3>Carport &amp; EV Hub</h3>
+                            <p>Solar canopies with load-balanced Level 2 or DC-fast charging - homes, workplaces and entire fleets.</p>
+                            <div class="spec-row">
+                                <span class="spec"><i class="fa-solid fa-charging-station"></i>7-22 kW</span>
+                                <span class="spec"><i class="fa-solid fa-scale-balanced"></i>Load balanced</span>
+                            </div>
+                        </div>
+                        <span class="sol-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                    </article>
+
+                    <article class="sol-card fade-up" id="sol-offgrid" data-category="storage" data-solution="sol-offgrid" data-delay="0.05">
+                        <div class="sol-media">
+                            <img src="images/wind-farm.jpg" alt="Off-grid cabin solar kit" loading="lazy" decoding="async">
+                            <span class="sol-tag">Off-Grid</span>
+                        </div>
+                        <div class="sol-body">
+                            <h3>Off-Grid &amp; Cabin Kits</h3>
+                            <p>Total independence in a crate: pre-engineered hybrid kits with lithium storage and generator sync.</p>
+                            <div class="spec-row">
+                                <span class="spec"><i class="fa-solid fa-mountain-sun"></i>3-15 kW</span>
+                                <span class="spec"><i class="fa-solid fa-generator"></i>Gen sync</span>
+                            </div>
+                        </div>
+                        <span class="sol-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                    </article>
+
+                    <article class="sol-card fade-up" id="sol-community" data-category="commercial" data-solution="sol-community" data-delay="0.1">
+                        <div class="sol-media">
+                            <img src="images/hero-sun-flare.jpg" alt="Community solar garden at sunset" loading="lazy" decoding="async">
+                            <span class="sol-tag t-orange">Utility</span>
+                        </div>
+                        <div class="sol-body">
+                            <h3>Community &amp; Utility Gardens</h3>
+                            <p>Subscription solar gardens from 1-80 MW - clean power for renters and businesses without a roof.</p>
+                            <div class="spec-row">
+                                <span class="spec"><i class="fa-solid fa-city"></i>1-80 MW</span>
+                                <span class="spec"><i class="fa-solid fa-users"></i>No roof needed</span>
+                            </div>
+                        </div>
+                        <span class="sol-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <div class="estimator fade-up">
+                    <div>
+                        <span class="section-eyebrow">Savings Estimator</span>
+                        <h2 class="section-title" style="font-size: 36px;">What Could You Save?</h2>
+                        <p class="section-desc mb-4">Drag the slider to your average monthly electric bill and tell us about your sunshine. The math updates instantly.</p>
+
+                        <div class="est-field">
+                            <div class="est-label">
+                                <label for="estBill">Monthly Electric Bill</label>
+                                <output for="estBill" id="estBillOut">$180</output>
+                            </div>
+                            <input type="range" class="est-range" id="estBill" min="60" max="600" step="10" value="180" aria-label="Monthly electric bill">
+                        </div>
+
+                        <div class="est-field mb-0">
+                            <label class="est-label" for="estSun" style="display:block;">Your Roof's Sun Exposure</label>
+                            <select class="est-select" id="estSun">
+                                <option value="fair">Partly shaded / fair exposure</option>
+                                <option value="good" selected>Good exposure, some shade</option>
+                                <option value="great">Full sun, unobstructed roof</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="est-result">
+                        <span class="est-kicker">Estimated Outcome</span>
+                        <div class="est-num" id="estYearlyOut">$1,890</div>
+                        <p class="est-cap">saved in year one alone</p>
+                        <div class="est-row">
+                            <div class="est-mini">
+                                <strong id="estSizeOut">9.5 kW</strong>
+                                <span>System Size</span>
+                            </div>
+                            <div class="est-mini">
+                                <strong id="est25Out">$47,300</strong>
+                                <span>25-Year Savings</span>
+                            </div>
+                        </div>
+                        <div class="est-co2">
+                            <i class="fa-solid fa-leaf"></i>
+                            Offset roughly <span id="estCo2Out">&nbsp;7.2 tons&nbsp;</span> of CO&#8322; every year
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="premium-impact-section section-padding">
+            <div class="impact-overlay"></div>
+            <div class="container impact-content text-center">
+                <div class="fade-up mb-5">
+                    <span class="section-eyebrow eyebrow-on-dark mx-auto">Every Solution Includes</span>
+                    <h2 class="cinematic-title on-dark">The Full Stackly Package</h2>
+                </div>
+                <div class="grid-3 mx-auto" style="max-width: 1000px;">
+                    <div class="info-card fade-up">
+                        <div class="info-card-icon"><i class="fa-solid fa-drafting-compass"></i></div>
+                        <h3>Custom Engineering</h3>
+                        <p>A 3D model of your property with production guarantees - never a cookie-cutter layout.</p>
+                    </div>
+                    <div class="info-card fade-up" data-delay="0.1">
+                        <div class="info-card-icon"><i class="fa-solid fa-file-shield"></i></div>
+                        <h3>Paperwork, Handled</h3>
+                        <p>Permits, utility interconnection and every incentive application filed by our team.</p>
+                    </div>
+                    <div class="info-card fade-up" data-delay="0.2">
+                        <div class="info-card-icon"><i class="fa-solid fa-infinity"></i></div>
+                        <h3>Lifetime Monitoring</h3>
+                        <p>AI-driven performance tracking with alerts before issues ever reach your panels.</p>
+                    </div>
+                </div>
+                <div class="mt-5 fade-up">
+                    <a href="contact.html" class="btn btn-primary btn-lg">Design My System <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header text-center fade-up">
+                    <span class="section-eyebrow mx-auto">Find Your Fit</span>
+                    <h2 class="section-title">Which Path Sounds Like You?</h2>
+                    <p class="section-desc">Answer one question and jump straight to the solution built for it.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="info-card fade-up">
+                        <div class="info-card-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                        <h3>I Own a Home</h3>
+                        <p>Cut the bill, boost resale value and keep the AC running through every heatwave.</p>
+                        <a href="#sol-residential" class="sol-link read-more">See Home Solar <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="info-card fade-up" data-delay="0.1">
+                        <div class="info-card-icon"><i class="fa-solid fa-building"></i></div>
+                        <h3>I Run a Business</h3>
+                        <p>Turn idle rooftops and parking lots into predictable, decade-long savings.</p>
+                        <a href="#sol-commercial" class="sol-link read-more">See Commercial <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="info-card fade-up" data-delay="0.2">
+                        <div class="info-card-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                        <h3>My Grid Keeps Failing</h3>
+                        <p>Store your own sunshine and ride out every outage without noticing.</p>
+                        <a href="#sol-storage" class="sol-link read-more">See Battery Backup <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header text-center fade-up">
+                    <span class="section-eyebrow mx-auto">Proof, Not Promises</span>
+                    <h2 class="section-title">Performance Across Every Install</h2>
+                </div>
+                <div class="impact-grid mt-5">
+                    <div class="impact-card fade-up">
+                        <div class="progress-circle" data-value="98">
+                            <svg viewBox="0 0 120 120" aria-hidden="true">
+                                <circle cx="60" cy="60" r="54"></circle>
+                                <circle cx="60" cy="60" r="54" class="prog-fill"></circle>
+                            </svg>
+                            <i class="fa-solid fa-signal"></i>
+                        </div>
+                        <h3><span class="counter" data-target="98">0</span>%</h3>
+                        <p>Fleet Uptime</p>
+                    </div>
+                    <div class="impact-card fade-up" data-delay="0.1">
+                        <div class="progress-circle" data-value="92">
+                            <svg viewBox="0 0 120 120" aria-hidden="true">
+                                <circle cx="60" cy="60" r="54"></circle>
+                                <circle cx="60" cy="60" r="54" class="prog-fill"></circle>
+                            </svg>
+                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3><span class="counter" data-target="92">0</span>%</h3>
+                        <p>Avg Bill Offset</p>
+                    </div>
+                    <div class="impact-card fade-up" data-delay="0.2">
+                        <div class="progress-circle" data-value="96">
+                            <svg viewBox="0 0 120 120" aria-hidden="true">
+                                <circle cx="60" cy="60" r="54"></circle>
+                                <circle cx="60" cy="60" r="54" class="prog-fill"></circle>
+                            </svg>
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3><span class="counter" data-target="96">0</span>%</h3>
+                        <p>Forecast Accuracy</p>
+                    </div>
+                    <div class="impact-card fade-up" data-delay="0.3">
+                        <div class="progress-circle" data-value="100">
+                            <svg viewBox="0 0 120 120" aria-hidden="true">
+                                <circle cx="60" cy="60" r="54"></circle>
+                                <circle cx="60" cy="60" r="54" class="prog-fill"></circle>
+                            </svg>
+                            <i class="fa-solid fa-stamp"></i>
+                        </div>
+                        <h3><span class="counter" data-target="100">0</span>%</h3>
+                        <p>Permit Approval Rate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-band">
+            <div class="container cta-inner">
+                <div>
+                    <h2>Found Your Match?</h2>
+                    <p>Get a fixed quote for your favorite solution within 24 hours.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="contact.html" class="btn btn-white">Get My Quote</a>
+                    <a href="projects.html" class="btn btn-dark">See Real Projects <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal fade" id="solModal" tabindex="-1" aria-labelledby="smTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-head-img">
+                    <img src="images/modern-home.jpg" alt="" id="smImg">
+                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                    <span class="sol-tag" id="smTag" style="top: auto; bottom: -12px;">Tag</span>
+                </div>
+                <div class="modal-body">
+                    <h3 id="smTitle">Title</h3>
+                    <p id="smDesc" class="mb-3"></p>
+                    <div class="spec-row" id="smSpecs" style="border-top: none; margin-top: 0;"></div>
+                    <ul class="tech-benefits mt-4" id="smFeatures"></ul>
+                    <div class="d-flex gap-3 flex-wrap mt-4 pt-2">
+                        <a href="contact.html" class="btn btn-primary">Get This Solution <i class="fa-solid fa-arrow-right"></i></a>
+                        <button type="button" class="btn btn-outline" style="border-color: rgba(16,20,16,.2); color: var(--dark-text);" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="premium-footer footer-fill-green">
+        <div class="footer-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo logo-footer" aria-label="Stackly home">
+                    <span class="logo-mark"><img src="images/logo.png" alt="Stackly logo" width="42" height="42" loading="eager"></span>
+                </a>
+                <p>Engineering premium residential and commercial solar systems for a sustainable, sun-powered tomorrow.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="404.html" class="social-icon" aria-label="X (formerly Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="solutions.html#sol-residential">Residential Solar</a></li>
+                    <li><a href="solutions.html#sol-commercial">Commercial Solar</a></li>
+                    <li><a href="solutions.html#sol-storage">Battery Storage</a></li>
+                    <li><a href="solutions.html#sol-ev">EV Charging</a></li>
+                    <li><a href="solutions.html#sol-offgrid">Off-Grid Kits</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <ul class="footer-contact-list">
+                    <li><i class="fa-solid fa-location-dot"></i> 1200 Sunbeam Ave, Austin, TX</li>
+                    <li><i class="fa-solid fa-phone"></i> +1 (800) 555-SOLAR</li>
+                    <li><i class="fa-solid fa-envelope"></i> hello@stackly.energy</li>
+                </ul>
+                <form class="newsletter-form" id="nlForm" novalidate>
+                    <input type="email" placeholder="Email Address" aria-label="Email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <span class="nl-msg" id="nlMsg" role="status"></span>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; <span id="year">2026</span> Stackly Energy. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms &amp; Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/pages.js"></script>
+</body>
+</html>

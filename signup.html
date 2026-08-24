@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Stackly Solar Energy</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230F2E1D'/><circle cx='50' cy='50' r='24' fill='%23FFC93C'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <div class="auth-wrap">
+
+        <aside class="auth-hero">
+            <span class="hero-orb-a"></span>
+            <span class="hero-orb-b"></span>
+            <span class="hero-ring"></span>
+
+            <div class="hero-brand">
+                <img src="images/logo.png" alt="Stackly Solar">
+            </div>
+
+            <div class="hero-mid">
+                <h1>Join thousands <span>harvesting</span> the sun with us.</h1>
+                <p>Create your account in under a minute — get instant quotes, track installations and watch your savings grow month after month.</p>
+                <ul class="hero-points">
+                    <li><i class="fa-solid fa-bolt"></i>Instant solar quotes tailored to your roof</li>
+                    <li><i class="fa-solid fa-piggy-bank"></i>Average customers save $1,840 a year</li>
+                    <li><i class="fa-solid fa-leaf"></i>Cut your carbon footprint from day one</li>
+                </ul>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hstat"><strong>$1,840</strong><small>Avg. saved / yr</small></div>
+                <div class="hstat"><strong>48h</strong><small>Quote turnaround</small></div>
+                <div class="hstat"><strong>25 yrs</strong><small>Performance warranty</small></div>
+            </div>
+        </aside>
+
+        <main class="auth-panel">
+            <a href="index.html" class="back-site"><i class="fa-solid fa-arrow-left"></i> Back to website</a>
+
+            <div class="panel-brand">
+                <a href="index.html"><img src="images/logo.png" alt="Stackly Solar"></a>
+            </div>
+
+            <div class="auth-card">
+                <div class="auth-head">
+                    <h2>Create Your Account</h2>
+                    <p>Start your solar journey with Stackly today.</p>
+                </div>
+
+                <label class="role-label">I am registering as</label>
+                <div class="role-cards">
+                    <button type="button" class="role-card active" data-role="user">
+                        <span class="rc-ico"><i class="fa-solid fa-house-user"></i></span>
+                        <span class="rc-txt"><strong>User</strong><small>I want solar for my home</small></span>
+                        <span class="rc-check"><i class="fa-solid fa-check"></i></span>
+                    </button>
+                    <button type="button" class="role-card" data-role="admin">
+                        <span class="rc-ico"><i class="fa-solid fa-user-gear"></i></span>
+                        <span class="rc-txt"><strong>Admin</strong><small>Manage platform operations</small></span>
+                        <span class="rc-check"><i class="fa-solid fa-check"></i></span>
+                    </button>
+                </div>
+
+                <form id="signupForm" novalidate>
+                    <div class="f-group">
+                        <label class="f-label" for="suName">Full Name</label>
+                        <input type="text" id="suName" class="f-control" placeholder="John Carter" autocomplete="name">
+                        <span class="err-msg"></span>
+                    </div>
+
+                    <div class="f-group">
+                        <label class="f-label" for="suEmail">Email Address</label>
+                        <input type="email" id="suEmail" class="f-control" placeholder="you@example.com" autocomplete="email">
+                        <span class="err-msg"></span>
+                    </div>
+
+                    <div class="f-group">
+                        <label class="f-label" for="suPhone">Phone Number</label>
+                        <input type="tel" id="suPhone" class="f-control" placeholder="+1 (555) 000-1234" autocomplete="tel">
+                        <span class="err-msg"></span>
+                    </div>
+
+                    <div class="f-group">
+                        <label class="f-label" for="suPass">Password</label>
+                        <div class="pw-wrap">
+                            <input type="password" id="suPass" class="f-control" placeholder="Minimum 8 characters" autocomplete="new-password">
+                            <button type="button" class="pw-eye" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                        <div class="strength">
+                            <div class="strength-track"><div class="strength-fill" id="strengthFill"></div></div>
+                            <span class="strength-txt" id="strengthTxt"></span>
+                        </div>
+                        <span class="err-msg"></span>
+                    </div>
+
+                    <div class="f-group">
+                        <label class="f-label" for="suConf">Confirm Password</label>
+                        <div class="pw-wrap">
+                            <input type="password" id="suConf" class="f-control" placeholder="Re-enter your password" autocomplete="new-password">
+                            <button type="button" class="pw-eye" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                        <span class="err-msg"></span>
+                    </div>
+
+                    <div class="terms-wrap">
+                        <label class="terms-row">
+                            <input type="checkbox" id="agreeTerms">
+                            <span>I agree to the <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a> of Stackly Solar Energy.</span>
+                        </label>
+                        <span class="err-msg"></span>
+                    </div>
+
+                    <button type="submit" id="signupBtn" class="btn-auth">
+                        Create Account <i class="fa-solid fa-user-plus"></i>
+                    </button>
+                </form>
+
+                <p class="auth-alt">Already have an account? <a href="login.html">Login here</a></p>
+                <p class="demo-hint"><i class="fa-solid fa-circle-info"></i> Demo mode — no real data is stored.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

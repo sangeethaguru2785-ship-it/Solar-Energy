@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard | Stackly Solar Energy</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230F2E1D'/><circle cx='50' cy='50' r='24' fill='%23FFC93C'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/userdash.css">
+</head>
+<body>
+
+    <aside class="ud-sidebar" id="udSidebar">
+        <a href="index.html" class="usb-brand">
+            <img src="images/logo.png" alt="Stackly Solar">
+        </a>
+
+        <span class="usb-group">Main</span>
+        <a href="#" class="usb-link active" data-section="dashboard"><i class="fa-solid fa-gauge-high"></i><span>Dashboard</span></a>
+
+        <span class="usb-group">My Solar</span>
+        <a href="#" class="usb-link" data-section="system"><i class="fa-solid fa-solar-panel"></i><span>My Solar System</span></a>
+        <a href="#" class="usb-link" data-section="projects"><i class="fa-solid fa-diagram-project"></i><span>My Projects</span></a>
+        <a href="#" class="usb-link" data-section="usage"><i class="fa-solid fa-bolt"></i><span>Energy Usage</span></a>
+        <a href="#" class="usb-link" data-section="savings"><i class="fa-solid fa-piggy-bank"></i><span>Energy Savings</span></a>
+
+        <span class="usb-group">Account</span>
+        <a href="#" class="usb-link" data-section="profile"><i class="fa-solid fa-user"></i><span>My Profile</span></a>
+        <a href="#" class="usb-link" data-section="services"><i class="fa-solid fa-briefcase"></i><span>Services</span></a>
+        <a href="#" class="usb-link" data-section="payments"><i class="fa-solid fa-credit-card"></i><span>Payments</span></a>
+        <a href="#" class="usb-link" data-section="support"><i class="fa-solid fa-headset"></i><span>Support</span></a>
+        <a href="#" class="usb-link" data-section="notifications"><i class="fa-regular fa-bell"></i><span>Notifications</span></a>
+        <a href="#" class="usb-link" data-section="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+        <a href="login.html" class="usb-link" style="color:rgba(255,255,255,0.55)"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Logout</span></a>
+
+        <div class="usb-foot">
+            <a href="index.html" class="usb-back"><i class="fa-solid fa-house-chimney"></i> Go to Home</a>
+            <span class="usb-ver">v1.2.0 &bull; Stackly Energy</span>
+        </div>
+    </aside>
+
+    <div class="ud-backdrop" id="udBackdrop"></div>
+
+    <header class="ud-topbar">
+        <a href="index.html" class="tb-brand">
+            <img src="images/logo.png" alt="Stackly Solar">
+        </a>
+
+        <div class="tb-right">
+            <button type="button" class="tb-chip menu-btn" id="udMenuBtn" aria-label="Open menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="dropdown">
+                <button type="button" class="tb-chip" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="tb-badge">2</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end notif-panel">
+                    <div class="notif-row">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        <div><strong>New invoice available</strong><small>INV-2043 &bull; $86.20 due Sep 05</small></div>
+                    </div>
+                    <div class="notif-row">
+                        <i class="fa-solid fa-solar-panel"></i>
+                        <div><strong>Maintenance complete</strong><small>Panel cleaning finished yesterday</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button type="button" class="tb-user" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="ud-avatar" id="udAvatar">SC</span>
+                    <span class="tb-meta"><strong id="udName">Sarah Carter</strong><small>User Account</small></span>
+                    <i class="fa-solid fa-chevron-down" style="font-size:11px;color:#5F6F5A"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end adm-menu">
+                    <li><a class="dropdown-item" href="#installations"><i class="fa-solid fa-solar-panel"></i>My Installations</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear"></i>Account Settings</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="login.html" style="color:#B03A3A"><i class="fa-solid fa-right-from-bracket" style="color:#B03A3A"></i>Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="ud-main">
+
+        <section class="ud-sec active" id="sec-dashboard">
+        <section class="welcome-banner">
+            <h2 id="greetLine">Good Morning, <span>Sarah</span></h2>
+            <p>Your rooftop system is performing beautifully today — you've already generated enough clean energy to power your home and export the surplus back to the grid.</p>
+            <a href="services.html" class="btn-solar">Explore More Services <i class="fa-solid fa-arrow-right"></i></a>
+        </section>
+
+        <section class="stat-grid">
+            <div class="stat-card-adm">
+                <div class="sc-head"><span class="sc-label">Energy Today</span><span class="sc-ico yellow"><i class="fa-solid fa-bolt"></i></span></div>
+                <div class="sc-val" data-count="24" data-fmt="kwh">0 kWh</div>
+                <p class="sc-sub"><b class="up"><i class="fa-solid fa-arrow-trend-up"></i> +12%</b> vs yesterday</p>
+            </div>
+            <div class="stat-card-adm">
+                <div class="sc-head"><span class="sc-label">Savings This Month</span><span class="sc-ico green"><i class="fa-solid fa-piggy-bank"></i></span></div>
+                <div class="sc-val" data-count="186" data-fmt="usd">$0</div>
+                <p class="sc-sub"><b class="up"><i class="fa-solid fa-arrow-trend-up"></i> +8%</b> vs last month</p>
+            </div>
+            <div class="stat-card-adm">
+                <div class="sc-head"><span class="sc-label">CO&#8322; Offset</span><span class="sc-ico green"><i class="fa-solid fa-leaf"></i></span></div>
+                <div class="sc-val" data-count="642" data-fmt="kg">0 kg</div>
+                <p class="sc-sub">Equivalent to 29 trees planted</p>
+            </div>
+            <div class="stat-card-adm">
+                <div class="sc-head"><span class="sc-label">Active Projects</span><span class="sc-ico yellow"><i class="fa-solid fa-solar-panel"></i></span></div>
+                <div class="sc-val" data-count="3" data-fmt="plain">0</div>
+                <p class="sc-sub">1 installation in progress</p>
+            </div>
+        </section>
+
+        <section class="charts-grid">
+            <div class="panel-adm">
+                <div class="panel-head">
+                    <h4><i class="fa-solid fa-chart-line"></i>Monthly Energy Production</h4>
+                    <span style="font-size:12px;font-weight:600;color:#5F6F5A">kWh / month</span>
+                </div>
+                <div class="chart-box"><canvas id="prodChart"></canvas></div>
+            </div>
+
+            <div class="panel-adm">
+                <div class="panel-head">
+                    <h4><i class="fa-solid fa-chart-pie"></i>Energy Split</h4>
+                </div>
+                <div class="donut-box"><canvas id="splitChart"></canvas>
+                    <div class="donut-center"><strong>842</strong><small>kWh total</small></div>
+                </div>
+                <div class="legend-dots">
+                    <span><i class="ldot" style="background:#1C4A2E"></i>Self-use</span>
+                    <span><i class="ldot" style="background:#FFC93C"></i>Grid export</span>
+                    <span><i class="ldot" style="background:#EDA408"></i>Battery</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="panels-grid" id="installations">
+            <div class="panel-adm">
+                <div class="panel-head"><h4><i class="fa-solid fa-solar-panel"></i>My Installations</h4></div>
+                <div class="install-item">
+                    <span class="inst-ico"><i class="fa-solid fa-house-chimney"></i></span>
+                    <div class="inst-info"><strong>Rooftop Array</strong><small>9.6 kWp &bull; Live since Jan 2025</small></div>
+                    <span class="badge-st bs-active">active</span>
+                </div>
+                <div class="install-item">
+                    <span class="inst-ico"><i class="fa-solid fa-car-battery"></i></span>
+                    <div class="inst-info"><strong>Powerwall Battery</strong><small>13.5 kWh storage</small></div>
+                    <span class="badge-st bs-active">active</span>
+                </div>
+                <div class="install-item">
+                    <span class="inst-ico"><i class="fa-solid fa-charging-station"></i></span>
+                    <div class="inst-info"><strong>EV Charger Install</strong><small>7.4 kW smart charger</small></div>
+                    <span class="badge-st bs-pending">scheduled</span>
+                </div>
+            </div>
+
+            <div class="panel-adm" id="invoices">
+                <div class="panel-head"><h4><i class="fa-solid fa-file-invoice-dollar"></i>Recent Invoices</h4></div>
+                <div class="invoice-row">
+                    <span class="inst-ico"><i class="fa-solid fa-receipt"></i></span>
+                    <div class="inst-info"><strong>INV-2043</strong><small>Sep 2026 &bull; Due in 12 days</small></div>
+                    <span class="inv-amt">$86.20</span>
+                </div>
+                <div class="invoice-row">
+                    <span class="inst-ico"><i class="fa-solid fa-receipt"></i></span>
+                    <div class="inst-info"><strong>INV-2011</strong><small>Aug 2026 &bull; Paid</small></div>
+                    <span class="inv-amt">$74.90</span>
+                </div>
+                <div class="invoice-row">
+                    <span class="inst-ico"><i class="fa-solid fa-receipt"></i></span>
+                    <div class="inst-info"><strong>INV-1988</strong><small>Jul 2026 &bull; Paid</small></div>
+                    <span class="inv-amt">$91.35</span>
+                </div>
+            </div>
+
+            <div class="support-card">
+                <h4><i class="fa-solid fa-headset" style="color:#FFC93C;margin-right:8px"></i>Need Help?</h4>
+                <p>Our solar experts are online 24/7 for monitoring alerts, billing questions or upgrade advice.</p>
+                <a href="contact.html" class="btn-solar">Contact Support</a>
+            </div>
+        </section>
+        </section>
+
+        <section class="ud-sec" id="sec-profile">
+            <div class="sec-head">
+                <div>
+                    <h2>My Profile</h2>
+                    <p>Your personal details and account information.</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="panel-adm text-center" id="profileCard">
+                        <span class="ud-avatar" style="width:74px;height:74px;font-size:24px;border-radius:20px;margin:6px auto 14px;display:flex">SC</span>
+                        <h4 style="font-size:19px;margin-bottom:3px" id="profNameView">Sarah Carter</h4>
+                        <p style="color:var(--muted);font-size:13.5px">sarah.carter@email.com</p>
+                        <span class="badge-st bs-active" style="margin-top:10px"><i class="fa-solid fa-house-user me-1"></i>Homeowner</span>
+                        <div class="mini-stats">
+                            <div><strong>2.4 yrs</strong><small>With Stackly</small></div>
+                            <div><strong>9.6 kWp</strong><small>System size</small></div>
+                            <div><strong>A+</strong><small>Graze score</small></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="panel-adm">
+                        <div class="panel-head"><h4><i class="fa-solid fa-id-card"></i>Personal Information</h4></div>
+                        <form id="udProfileForm" class="ud-form" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6"><label class="f-label">Full Name</label><input type="text" class="f-control" value="Sarah Carter"></div>
+                                <div class="col-md-6"><label class="f-label">Email Address</label><input type="email" class="f-control" value="sarah.carter@email.com"></div>
+                                <div class="col-md-6"><label class="f-label">Phone Number</label><input type="tel" class="f-control" value="+1 (555) 010-8842"></div>
+                                <div class="col-md-6"><label class="f-label">Address</label><input type="text" class="f-control" value="12 Maple Grove, Austin TX"></div>
+                            </div>
+                            <button type="submit" class="btn-solar mt-4"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+                        </form>
+                    </div>
+
+                    <div class="panel-adm mt-4">
+                        <div class="panel-head"><h4><i class="fa-solid fa-lock"></i>Security</h4></div>
+                        <form id="udPassForm" class="ud-form" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-4"><label class="f-label">Current Password</label><input type="password" class="f-control" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"></div>
+                                <div class="col-md-4"><label class="f-label">New Password</label><input type="password" class="f-control" id="udPwNew" placeholder="Min. 8 characters"></div>
+                                <div class="col-md-4"><label class="f-label">Confirm Password</label><input type="password" class="f-control" id="udPwConf" placeholder="Repeat password"></div>
+                            </div>
+                            <button type="submit" class="btn-nf-ghost mt-4"><i class="fa-solid fa-key"></i> Update Password</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ud-sec" id="sec-system">
+            <div class="sec-head">
+                <div>
+                    <h2>My Solar System</h2>
+                    <p>Hardware overview and live health of your installation.</p>
+                </div>
+            </div>
+
+            <div class="sys-grid">
+                <div class="sys-tile">
+                    <span class="st-ico-y"><i class="fa-solid fa-solar-panel"></i></span>
+                    <small>Solar Array</small>
+                    <strong>9.6 kWp</strong>
+                    <em>24 &times; 400W mono panels</em>
+                </div>
+                <div class="sys-tile">
+                    <span class="st-ico-g"><i class="fa-solid fa-plug-circle-bolt"></i></span>
+                    <small>Inverter</small>
+                    <strong>8 kW Hybrid</strong>
+                    <em>Firmware v3.2.1 &bull; Online</em>
+                </div>
+                <div class="sys-tile">
+                    <span class="st-ico-y"><i class="fa-solid fa-car-battery"></i></span>
+                    <small>Battery Storage</small>
+                    <strong>13.5 kWh</strong>
+                    <em>72% charged right now</em>
+                </div>
+                <div class="sys-tile">
+                    <span class="st-ico-g"><i class="fa-solid fa-calendar-check"></i></span>
+                    <small>Commissioned</small>
+                    <strong>Jan 2025</strong>
+                    <em>Next service: Oct 2026</em>
+                </div>
+            </div>
+
+            <div class="panel-adm mt-4">
+                <div class="panel-head"><h4><i class="fa-solid fa-heart-pulse"></i>System Health</h4><span class="badge-st bs-active">all systems normal</span></div>
+                <div class="meter-row"><span>Panel Output Efficiency</span><div class="meter"><div class="meter-fill" style="width:96%"></div></div><b>96%</b></div>
+                <div class="meter-row"><span>Inverter Performance</span><div class="meter"><div class="meter-fill" style="width:98%"></div></div><b>98%</b></div>
+                <div class="meter-row"><span>Battery Health</span><div class="meter"><div class="meter-fill" style="width:94%"></div></div><b>94%</b></div>
+                <div class="meter-row"><span>Grid Connection Quality</span><div class="meter"><div class="meter-fill" style="width:99%"></div></div><b>99%</b></div>
+            </div>
+        </section>
+
+        <section class="ud-sec" id="sec-projects">
+            <div class="sec-head">
+                <div>
+                    <h2>My Projects</h2>
+                    <p>Every job booked at your property, from quote to switch-on.</p>
+                </div>
+            </div>
+
+            <div class="panel-adm">
+                <div class="proj-line">
+                    <span class="inst-ico"><i class="fa-solid fa-house-chimney"></i></span>
+                    <div class="inst-info"><strong>Rooftop Solar Array</strong><small>9.6 kWp &bull; Completed Jan 2025</small>
+                        <div class="meter sm"><div class="meter-fill" style="width:100%"></div></div>
+                    </div>
+                    <span class="badge-st bs-completed">completed</span>
+                </div>
+                <div class="proj-line">
+                    <span class="inst-ico"><i class="fa-solid fa-car-battery"></i></span>
+                    <div class="inst-info"><strong>Battery Storage Add-on</strong><small>13.5 kWh &bull; Commissioned Nov 2025</small>
+                        <div class="meter sm"><div class="meter-fill" style="width:100%"></div></div>
+                    </div>
+                    <span class="badge-st bs-completed">completed</span>
+                </div>
+                <div class="proj-line">
+                    <span class="inst-ico"><i class="fa-solid fa-charging-station"></i></span>
+                    <div class="inst-info"><strong>EV Smart Charger</strong><small>7.4 kW &bull; Installation scheduled Sep 02</small>
+                        <div class="meter sm"><div class="meter-fill" style="width:35%"></div></div>
+                    </div>
+                    <span class="badge-st bs-pending">in progress</span>
+                </div>
+                <div class="proj-line">
+                    <span class="inst-ico"><i class="fa-solid fa-house-signal"></i></span>
+                    <div class="inst-info"><strong>Smart Home Energy Monitor</strong><small>Quote Q-2901 &bull; awaiting your approval</small>
+                        <div class="meter sm"><div class="meter-fill" style="width:8%"></div></div>
+                    </div>
+                    <span class="badge-st bs-active">quoted</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="ud-sec" id="sec-usage">
+            <div class="sec-head">
+                <div>
+                    <h2>Energy Usage</h2>
+                    <p>How much energy your home draws, uses and exports.</p>
+                </div>
+            </div>
+
+            <div class="stat-grid three">
+                <div class="stat-card-adm">
+                    <div class="sc-head"><span class="sc-label">Consumed This Month</span><span class="sc-ico yellow"><i class="fa-solid fa-plug"></i></span></div>
+                    <div class="sc-val">581 kWh</div>
+                    <p class="sc-sub"><b class="up"><i class="fa-solid fa-arrow-trend-down"></i> -6%</b> vs last month</p>
+                </div>
+                <div class="stat-card-adm">
+                    <div class="sc-head"><span class="sc-label">Exported to Grid</span><span class="sc-ico green"><i class="fa-solid fa-arrow-up-from-ground"></i></span></div>
+                    <div class="sc-val">261 kWh</div>
+                    <p class="sc-sub">Earned $34 in export credits</p>
+                </div>
+                <div class="stat-card-adm">
+                    <div class="sc-head"><span class="sc-label">Drawn from Grid</span><span class="sc-ico yellow"><i class="fa-solid fa-tower-broadcast"></i></span></div>
+                    <div class="sc-val">118 kWh</div>
+                    <p class="sc-sub">Mostly overnight &amp; cloudy days</p>
+                </div>
+            </div>
+
+            <div class="panel-adm mt-4">
+                <div class="panel-head">
+                    <h4><i class="fa-solid fa-chart-line"></i>Usage vs Production</h4>
+                    <span style="font-size:12px;font-weight:600;color:var(--muted)">kWh / month</span>
+                </div>
+                <div class="chart-box"><canvas id="usageChart"></canvas></div>
+            </div>
+        </section>
+
+        <section class="ud-sec" id="sec-savings">
+            <div class="sec-head">
+                <div>
+                    <h2>Energy Savings</h2>
+                    <p>What going solar is saving you, month after month.</p>
+                </div>
+            </div>
+
+            <div class="stat-grid three">
+                <div class="stat-card-adm">
+                    <div class="sc-head"><span class="sc-label">Saved This Month</span><span class="sc-ico yellow"><i class="fa-solid fa-piggy-bank"></i></span></div>
+                    <div class="sc-val">$186</div>
+                    <p class="sc-sub"><b class="up"><i class="fa-solid fa-arrow-trend-up"></i> +8%</b> vs July</p>
+                </div>
+                <div class="stat-card-adm">
+                    <div class="sc-head"><span class="sc-label">Saved This Year</span><span class="sc-ico green"><i class="fa-solid fa-sack-dollar"></i></span></div>
+                    <div class="sc-val">$1,712</div>
+                    <p class="sc-sub">93% toward your yearly goal</p>
+                </div>
+                <div class="stat-card-adm">
+                    <div class="sc-head"><span class="sc-label">System Payback</span><span class="sc-ico yellow"><i class="fa-solid fa-hourglass-half"></i></span></div>
+                    <div class="sc-val">42%</div>
+                    <p class="sc-sub">Est. full payback by 2031</p>
+                </div>
+            </div>
+
+            <div class="panel-adm mt-4">
+                <div class="panel-head">
+                    <h4><i class="fa-solid fa-chart-column"></i>Cumulative Savings</h4>
+                    <span style="font-size:12px;font-weight:600;color:var(--muted)">USD / month</span>
+                </div>
+                <div class="chart-box"><canvas id="savingsChart"></canvas></div>
+            </div>
+        </section>
+
+        <section class="ud-sec" id="sec-services">
+            <div class="sec-head">
+                <div>
+                    <h2>Services</h2>
+                    <p>Stackly services available to your account.</p>
+                </div>
+            </div>
+
+            <div class="panel-adm">
+                <div class="mini-svc">
+                    <span class="inst-ico"><i class="fa-solid fa-house-signal"></i></span>
+                    <div class="inst-info"><strong>Residential Solar</strong><small>Rooftop design, install &amp; monitoring</small></div>
+                    <span class="badge-st bs-active">subscribed</span>
+                </div>
+                <div class="mini-svc">
+                    <span class="inst-ico"><i class="fa-solid fa-car-battery"></i></span>
+                    <div class="inst-info"><strong>Battery Storage</strong><small>Backup power and peak-shaving</small></div>
+                    <span class="badge-st bs-active">subscribed</span>
+                </div>
+                <div class="mini-svc">
+                    <span class="inst-ico"><i class="fa-solid fa-charging-station"></i></span>
+                    <div class="inst-info"><strong>EV Charging</strong><small>Smart home charger program</small></div>
+                    <span class="badge-st bs-pending">pending</span>
+                </div>
+                <div class="mini-svc">
+                    <span class="inst-ico"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+                    <div class="inst-info"><strong>Maintenance Plan+</strong><small>Annual cleaning, checks &amp; priority support</small></div>
+                    <a href="contact.html" class="btn-nf-ghost sm-btn">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="ud-sec" id="sec-payments">
+            <div class="sec-head">
+                <div>
+                    <h2>Payments</h2>
+                    <p>Invoices, payment methods and billing history.</p>
+                </div>
+            </div>
+
+            <div class="pay-wrap">
+                <div class="pay-card">
+                    <div class="pc-top"><i class="fa-brands fa-cc-visa"></i><span>Default card</span></div>
+                    <div class="pc-num">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 4242</div>
+                    <div class="pc-bot"><span>SARAH CARTER</span><span>09 / 28</span></div>
+                </div>
+
+                <div class="panel-adm flex-grow-1">
+                    <div class="panel-head"><h4><i class="fa-solid fa-file-invoice-dollar"></i>Invoices</h4></div>
+                    <div class="table-responsive">
+                        <table class="table ud-table align-middle mb-0">
+                            <thead>
+                                <tr><th>Invoice</th><th>Period</th><th>Status</th><th class="text-end">Amount</th><th class="text-end">Action</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>INV-2043</strong></td><td>Sep 2026</td><td><span class="badge-st bs-pending">due Sep 05</span></td><td class="text-end"><b>$86.20</b></td><td class="text-end"><button class="btn-nf-ghost sm-btn js-pay">Pay Now</button></td></tr>
+                                <tr><td><strong>INV-2011</strong></td><td>Aug 2026</td><td><span class="badge-st bs-completed">paid</span></td><td class="text-end"><b>$74.90</b></td><td class="text-end"><a href="#" class="inv-link js-receipt">Receipt</a></td></tr>
+                                <tr><td><strong>INV-1988</strong></td><td>Jul 2026</td><td><span class="badge-st bs-completed">paid</span></td><td class="text-end"><b>$91.35</b></td><td class="text-end"><a href="#" class="inv-link js-receipt">Receipt</a></td></tr>
+                                <tr><td><strong>INV-1965</strong></td><td>Jun 2026</td><td><span class="badge-st bs-completed">paid</span></td><td class="text-end"><b>$69.80</b></td><td class="text-end"><a href="#" class="inv-link js-receipt">Receipt</a></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ud-sec" id="sec-support">
+            <div class="sec-head">
+                <div>
+                    <h2>Support</h2>
+                    <p>We typically respond within 2 hours, day or night.</p>
+                </div>
+            </div>
+
+            <div class="sys-grid three-col">
+                <div class="sys-tile center">
+                    <span class="st-ico-y"><i class="fa-solid fa-phone-volume"></i></span>
+                    <strong>+1 (800) 555-0102</strong>
+                    <em>24/7 phone line</em>
+                </div>
+                <div class="sys-tile center">
+                    <span class="st-ico-g"><i class="fa-solid fa-envelope-open-text"></i></span>
+                    <strong>hello@stackly.energy</strong>
+                    <em>Email support desk</em>
+                </div>
+                <div class="sys-tile center">
+                    <span class="st-ico-y"><i class="fa-brands fa-whatsapp"></i></span>
+                    <strong>Live Chat</strong>
+                    <em>WhatsApp &bull; avg reply 4 min</em>
+                </div>
+            </div>
+
+            <div class="panel-adm mt-4">
+                <div class="panel-head"><h4><i class="fa-solid fa-ticket"></i>Open a Support Ticket</h4></div>
+                <form id="udTicketForm" class="ud-form" novalidate>
+                    <div class="row g-3">
+                        <div class="col-md-6"><label class="f-label">Subject</label><input type="text" class="f-control" id="tkSubject" placeholder="e.g. Inverter alert on app"></div>
+                        <div class="col-md-6"><label class="f-label">Category</label>
+                            <select class="f-control" id="tkCat">
+                                <option value="">Select a category&hellip;</option>
+                                <option>Monitoring / App</option>
+                                <option>Billing</option>
+                                <option>Maintenance</option>
+                                <option>Upgrade enquiry</option>
+                            </select>
+                        </div>
+                        <div class="col-12"><label class="f-label">Message</label><textarea class="f-control" rows="4" id="tkMsg" placeholder="Describe the issue&hellip;"></textarea></div>
+                    </div>
+                    <button type="submit" class="btn-solar mt-4"><i class="fa-solid fa-paper-plane"></i> Submit Ticket</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="ud-sec" id="sec-notifications">
+            <div class="sec-head">
+                <div>
+                    <h2>Notifications</h2>
+                    <p>Alerts about your system, billing and account.</p>
+                </div>
+                <button class="btn-nf-ghost" id="uMarkAllRead"><i class="fa-solid fa-check-double"></i> Mark All Read</button>
+            </div>
+
+            <div class="ntf-page-u" id="uNotifList">
+                <div class="ntf-row-u unread">
+                    <span class="st-ico-y sq"><i class="fa-solid fa-file-invoice-dollar"></i></span>
+                    <div><strong>New invoice available</strong><small>INV-2043 &bull; $86.20 due Sep 05 &bull; 2 days ago</small></div>
+                    <span class="ntf-dot-u"></span>
+                </div>
+                <div class="ntf-row-u unread">
+                    <span class="st-ico-g sq"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+                    <div><strong>Maintenance complete</strong><small>Panel cleaning finished yesterday &bull; Yesterday</small></div>
+                    <span class="ntf-dot-u"></span>
+                </div>
+                <div class="ntf-row-u unread">
+                    <span class="st-ico-y sq"><i class="fa-solid fa-charging-station"></i></span>
+                    <div><strong>EV charger install scheduled</strong><small>Crew arriving Sep 02, 09:00 &bull; 3 days ago</small></div>
+                    <span class="ntf-dot-u"></span>
+                </div>
+                <div class="ntf-row-u">
+                    <span class="st-ico-g sq"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                    <div><strong>Record production week</strong><small>Your array produced 212 kWh last week! &bull; Last week</small></div>
+                    <span class="ntf-dot-u"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="ud-sec" id="sec-settings">
+            <div class="sec-head">
+                <div>
+                    <h2>Settings</h2>
+                    <p>Choose how and when we keep you posted.</p>
+                </div>
+            </div>
+
+            <div class="panel-adm">
+                <div class="panel-head"><h4><i class="fa-solid fa-sliders"></i>Notification Preferences</h4></div>
+                <label class="pref-row-u">
+                    <span><strong>Project updates</strong><small>Progress alerts for installations at my home</small></span>
+                    <span class="form-check form-switch"><input class="form-check-input u-pref" type="checkbox" checked data-key="uprefProjects"></span>
+                </label>
+                <label class="pref-row-u">
+                    <span><strong>New invoices</strong><small>Email me as soon as an invoice is issued</small></span>
+                    <span class="form-check form-switch"><input class="form-check-input u-pref" type="checkbox" checked data-key="uprefInvoices"></span>
+                </label>
+                <label class="pref-row-u">
+                    <span><strong>Weekly energy digest</strong><small>A Sunday summary of usage and savings</small></span>
+                    <span class="form-check form-switch"><input class="form-check-input u-pref" type="checkbox" data-key="uprefDigest"></span>
+                </label>
+                <label class="pref-row-u">
+                    <span><strong>Service reminders</strong><small>Heads-up before scheduled maintenance</small></span>
+                    <span class="form-check form-switch"><input class="form-check-input u-pref" type="checkbox" checked data-key="uprefMaintenance"></span>
+                </label>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="ud-footer">
+        &copy; 2026 Stackly Solar Energy &bull; User Dashboard &bull; <a href="index.html" style="color:#1C4A2E;font-weight:600;text-decoration:none">Back to Website</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="js/userdash.js"></script>
+</body>
+</html>

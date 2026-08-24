@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Stackly</title>
+    <meta name="description" content="Residential and commercial solar installation, battery storage, EV charging, monitoring, financing - end-to-end solar services by Stackly.">
+    <meta name="theme-color" content="#0F2E1D">
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23FFC93C'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%230F2E1D'/%3E%3Cg stroke='%23fff' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M32 6v8M32 50v8M6 32h8M50 32h8M14 14l6 6M44 44l6 6M50 14l-6 6M20 44l-6 6'/%3E%3C/g%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="Stackly home">
+                <span class="logo-mark"><img src="images/logo.png" alt="Stackly logo" width="42" height="42" loading="eager"></span>
+            </a>
+            <nav class="desktop-nav" aria-label="Primary navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="benefits.html">Benefits</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <a href="login.html" class="btn btn-login">Login</a>
+                <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="projects.html">Projects</a></li>
+
+            <li><a href="benefits.html">Benefits</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html" class="mobile-quote-btn">Get a Free Quote</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section class="page-hero" style="--ph-img: url('images/hero-solar-aerial.jpg');">
+            <div class="container">
+                <nav class="breadcrumbs" aria-label="Breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span class="current">Services</span>
+                </nav>
+                <h1 class="page-title">Everything the Sun<br>Needs to Work For You</h1>
+                <p class="page-sub">Six disciplines, one accountable team. We design, install, finance and maintain - so you never juggle contractors again.</p>
+            </div>
+        </section>
+
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header text-center fade-up">
+                    <span class="section-eyebrow mx-auto">What We Do</span>
+                    <h2 class="section-title">Full-Spectrum Solar Services</h2>
+                </div>
+                <div class="grid-3 services-static-grid" id="svcGrid">
+                    <article class="sol-card fade-up" data-category="install">
+                        <div class="sol-media">
+                            <img src="images/solar-roof.jpg" alt="Residential solar panel installation" loading="lazy" decoding="async">
+                            <span class="sol-tag">Installation</span>
+                        </div>
+                        <div class="sol-body">
+                            <h3>Solar Panel Installation</h3>
+                            <p>Precision-mounted Tier-1 arrays installed by NABCEP-certified crews - most homes powered within a single day.</p>
+                            <div class="spec-row">
+                                <span class="spec"><i class="fa-solid fa-clock"></i>1-day installs</span>
+                                <span class="spec"><i class="fa-solid fa-shield-halved"></i>Leak-proof mounts</span>
+                            </div>
+                        </div>
+                        <a href="solutions.html#sol-residential" class="sol-link read-more" style="padding: 0 26px 30px;">View Solution <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+
+                    <article class="sol-card fade-up" data-delay="0.05">
+                        <div class="sol-media">
+                            <img src="images/hero-solar-aerial.jpg" alt="Commercial solar farm aerial view" loading="lazy" decoding="async">
+                            <span class="sol-tag t-orange">Commercial</span>
+                        </div>
+                        <div class="sol-body">
+                            <h3>Commercial &amp; Utility Solar</h3>
+                            <p>Megawatt-scale engineering for businesses and communities - from rooftop portfolios to multi-acre solar gardens.</p>
+                            <div class="spec-row">
+                                <span class="spec"><i class="fa-solid fa-industry"></i>Up to 80 MW</span>
+                                <span class="spec"><i class="fa-solid fa-percent"></i>Incentives handled</span>
+                            </div>
+                        </div>
+                        <a href="solutions.html#sol-commercial" class="sol-link read-more" style="padding: 0 26px 30px;">View Solution <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+
+                    <article class="sol-card fade-up" data-delay="0.1">
+                        <div class="sol-media">
+                            <img src="images/battery-wall.jpg" alt="Home battery storage system" loading="lazy" decoding="async">
+                            <span class="sol-tag">Storage</span>
+                        </div>
+                        <div class="sol-body">
+                            <h3>Battery Storage &amp; Backup</h3>
+                            <p>Modular lithium walls that bank daylight, dodge peak tariffs and carry your home through every outage.</p>
+                            <div class="spec-row">
+                                <span class="spec"><i class="fa-solid fa-battery-full"></i>10-40 kWh</span>
+                                <span class="spec"><i class="fa-solid fa-plug-circle-bolt"></i>10ms switchover</span>
+                            </div>
+                        </div>
+                        <a href="solutions.html#sol-storage" class="sol-link read-more" style="padding: 0 26px 30px;">View Solution <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+
+                    <article class="sol-card fade-up">
+                        <div class="sol-media">
+                            <img src="images/ev-charging.jpg" alt="EV charger connected to solar" loading="lazy" decoding="async">
+                            <span class="sol-tag t-orange">Mobility</span>
+                        </div>
+                        <div class="sol-body">
+                            <h3>EV Charging Integration</h3>
+                            <p>Solar-paired Level 2 and DC-fast chargers with smart load balancing - your car drinks straight from the sun.</p>
+                            <div class="spec-row">
+                                <span class="spec"><i class="fa-solid fa-car-side"></i>Home &amp; fleet</span>
+                                <span class="spec"><i class="fa-solid fa-mobile-screen"></i>App control</span>
+                            </div>
+                        </div>
+                        <a href="solutions.html#sol-ev" class="sol-link read-more" style="padding: 0 26px 30px;">View Solution <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+
+                    <article class="sol-card fade-up" data-delay="0.05">
+                        <div class="sol-media">
+                            <img src="images/engineer-inspect.jpg" alt="Technician performing solar maintenance" loading="lazy" decoding="async">
+                            <span class="sol-tag">Care</span>
+                        </div>
+                        <div class="sol-body">
+                            <h3>Monitoring &amp; Maintenance</h3>
+                            <p>AI watches every watt around the clock; our crews handle cleaning, inspections and any warranty claim paperwork.</p>
+                            <div class="spec-row">
+                                <span class="spec"><i class="fa-solid fa-satellite-dish"></i>24/7 analytics</span>
+                                <span class="spec"><i class="fa-solid fa-headset"></i>48h SLA</span>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="sol-link read-more" style="padding: 0 26px 30px;">Book a Checkup <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+
+                    <article class="sol-card fade-up" data-delay="0.1">
+                        <div class="sol-media">
+                            <img src="images/handshake.jpg" alt="Consultant explaining solar financing options" loading="lazy" decoding="async">
+                            <span class="sol-tag t-dark">Finance</span>
+                        </div>
+                        <div class="sol-body">
+                            <h3>Financing &amp; Incentives</h3>
+                            <p>Cash, loan, lease or PPA - we model every path and file your federal, state and local incentives for you.</p>
+                            <div class="spec-row">
+                                <span class="spec"><i class="fa-solid fa-file-invoice-dollar"></i>$0-down options</span>
+                                <span class="spec"><i class="fa-solid fa-stamp"></i>Permits filed</span>
+                            </div>
+                        </div>
+                        <a href="solutions.html#sol-community" class="sol-link read-more" style="padding: 0 26px 30px;">Explore Options <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header text-center fade-up">
+                    <span class="section-eyebrow mx-auto">Why Stackly</span>
+                    <h2 class="section-title">The Difference Is in the Details</h2>
+                </div>
+                <div class="grid-3" id="whyGrid">
+                    <div class="info-card fade-up">
+                        <div class="info-card-icon"><i class="fa-solid fa-award"></i></div>
+                        <h3>NABCEP-Certified Crews</h3>
+                        <p>Every installer is certified, background-checked and directly employed - never outsourced subcontractors.</p>
+                    </div>
+                    <div class="info-card fade-up" data-delay="0.1">
+                        <div class="info-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>25-Year Warranty</h3>
+                        <p>Panels, inverters and workmanship covered under one simple promise, honored by the people who installed them.</p>
+                    </div>
+                    <div class="info-card fade-up" data-delay="0.2">
+                        <div class="info-card-icon"><i class="fa-solid fa-headset"></i></div>
+                        <h3>48-Hour Support SLA</h3>
+                        <p>Any issue, any season - a qualified engineer is on your roof or on a video call within two business days.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-we-work-section section-padding text-center bg-light">
+            <div class="container">
+                <span class="section-eyebrow mx-auto">Process</span>
+                <h2 class="section-title mb-5">How a Stackly Project Runs</h2>
+
+                <div class="work-process-grid">
+                    <div class="work-process-col fade-up">
+                        <div class="work-process-card">
+                            <div class="process-badge-container">
+                                <div class="process-img-wrapper">
+                                    <img src="images/hero-solar-aerial.jpg" alt="Drone site analysis" loading="lazy" decoding="async">
+                                </div>
+                                <span class="process-badge">Step 01</span>
+                            </div>
+                            <h3>Free Assessment</h3>
+                            <p>A drone scan plus a review of your bills produces an exact yield and savings forecast.</p>
+                        </div>
+                    </div>
+                    <div class="work-process-col has-divider fade-up" data-delay="0.1">
+                        <div class="work-process-card">
+                            <div class="process-badge-container">
+                                <div class="process-img-wrapper">
+                                    <img src="images/engineer-field.jpg" alt="Custom engineering design" loading="lazy" decoding="async">
+                                </div>
+                                <span class="process-badge">Step 02</span>
+                            </div>
+                            <h3>Design &amp; Proposal</h3>
+                            <p>You receive a 3D layout, production guarantee and transparent fixed pricing.</p>
+                        </div>
+                    </div>
+                    <div class="work-process-col has-divider fade-up" data-delay="0.2">
+                        <div class="work-process-card">
+                            <div class="process-badge-container">
+                                <div class="process-img-wrapper">
+                                    <img src="images/install-team.jpg" alt="Certified crew installing panels" loading="lazy" decoding="async">
+                                </div>
+                                <span class="process-badge">Step 03</span>
+                            </div>
+                            <h3>Install &amp; Approvals</h3>
+                            <p>We pull permits, install in days and manage the utility inspection for you.</p>
+                        </div>
+                    </div>
+                    <div class="work-process-col has-divider fade-up" data-delay="0.3">
+                        <div class="work-process-card">
+                            <div class="process-badge-container">
+                                <div class="process-img-wrapper">
+                                    <img src="images/hero-sun-flare.jpg" alt="Monitored panels at sunset" loading="lazy" decoding="async">
+                                </div>
+                                <span class="process-badge">Step 04</span>
+                            </div>
+                            <h3>Lifetime Care</h3>
+                            <p>Monitoring, maintenance and support continue for as long as you own your system.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header text-center fade-up">
+                    <span class="section-eyebrow mx-auto">Beyond the Panel</span>
+                    <h2 class="section-title">Complete Energy Coverage</h2>
+                    <p class="section-desc">Installation is only the beginning - pair your array with storage, charging and off-grid independence.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="info-card fade-up">
+                        <div class="info-card-icon"><i class="fa-solid fa-battery-full"></i></div>
+                        <h3>Storage Retrofits</h3>
+                        <p>Add battery backup to an existing array and keep the lights on when the neighborhood goes dark.</p>
+                        <a href="solutions.html#sol-storage" class="sol-link read-more">Explore Storage <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="info-card fade-up" data-delay="0.1">
+                        <div class="info-card-icon"><i class="fa-solid fa-charging-station"></i></div>
+                        <h3>EV Charging</h3>
+                        <p>Level-2 home chargers and fleet stations, wired straight into your solar production.</p>
+                        <a href="solutions.html#sol-ev" class="sol-link read-more">Explore Charging <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="info-card fade-up" data-delay="0.2">
+                        <div class="info-card-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+                        <h3>Off-Grid Systems</h3>
+                        <p>Hybrid wells, cabins and remote sites engineered for total utility independence.</p>
+                        <a href="solutions.html#sol-offgrid" class="sol-link read-more">Go Off-Grid <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header text-center fade-up">
+                    <span class="section-eyebrow mx-auto">Good Questions</span>
+                    <h2 class="section-title">Service FAQs</h2>
+                </div>
+                <div class="accordion faq-accordion mx-auto fade-up" id="svcFaq" style="max-width: 900px;">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#svc1" aria-expanded="true">
+                                Do you maintain systems you didn't install?
+                            </button>
+                        </h3>
+                        <div id="svc1" class="accordion-collapse collapse show" data-bs-parent="#svcFaq">
+                            <div class="accordion-body">Yes. After a $99 system health check we take over monitoring, cleaning and warranty liaison for any brand of rooftop or ground-mount array.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#svc2" aria-expanded="false">
+                                What does a maintenance visit include?
+                            </button>
+                        </h3>
+                        <div id="svc2" class="accordion-collapse collapse" data-bs-parent="#svcFaq">
+                            <div class="accordion-body">Panel washing, torque checks on every mount, thermal-imaging of strings, inverter firmware updates and a same-day production report.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#svc3" aria-expanded="false">
+                                Can I add batteries to my existing solar later?
+                            </button>
+                        </h3>
+                        <div id="svc3" class="accordion-collapse collapse" data-bs-parent="#svcFaq">
+                            <div class="accordion-body">Almost always. We audit your inverter and switchgear, then retrofit AC-coupled storage without touching your original panel warranty.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#svc4" aria-expanded="false">
+                                How long does a commercial project take end-to-end?
+                            </button>
+                        </h3>
+                        <div id="svc4" class="accordion-collapse collapse" data-bs-parent="#svcFaq">
+                            <div class="accordion-body">Typical 500 kW commercial builds run 14-20 weeks from signed contract to energized array, including interconnection and incentive filing.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#svc5" aria-expanded="false">
+                                What happens during a grid outage?
+                            </button>
+                        </h3>
+                        <div id="svc5" class="accordion-collapse collapse" data-bs-parent="#svcFaq">
+                            <div class="accordion-body">Homes with storage island automatically in under 20 milliseconds. Arrays without batteries shut down safely per code - we can retrofit transfer switching anytime.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-band">
+            <div class="container cta-inner">
+                <div>
+                    <h2>Not Sure Which Service Fits?</h2>
+                    <p>Tell us your goals - we'll map the smartest path to zero bills.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="contact.html" class="btn btn-white">Talk to an Expert</a>
+                    <a href="solutions.html" class="btn btn-dark">See Solutions <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="premium-footer footer-fill-green">
+        <div class="footer-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo logo-footer" aria-label="Stackly home">
+                    <span class="logo-mark"><img src="images/logo.png" alt="Stackly logo" width="42" height="42" loading="eager"></span>
+                </a>
+                <p>Engineering premium residential and commercial solar systems for a sustainable, sun-powered tomorrow.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="404.html" class="social-icon" aria-label="X (formerly Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="solutions.html#sol-residential">Residential Solar</a></li>
+                    <li><a href="solutions.html#sol-commercial">Commercial Solar</a></li>
+                    <li><a href="solutions.html#sol-storage">Battery Storage</a></li>
+                    <li><a href="solutions.html#sol-ev">EV Charging</a></li>
+                    <li><a href="solutions.html#sol-offgrid">Off-Grid Kits</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <ul class="footer-contact-list">
+                    <li><i class="fa-solid fa-location-dot"></i> 1200 Sunbeam Ave, Austin, TX</li>
+                    <li><i class="fa-solid fa-phone"></i> +1 (800) 555-SOLAR</li>
+                    <li><i class="fa-solid fa-envelope"></i> hello@stackly.energy</li>
+                </ul>
+                <form class="newsletter-form" id="nlForm" novalidate>
+                    <input type="email" placeholder="Email Address" aria-label="Email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <span class="nl-msg" id="nlMsg" role="status"></span>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; <span id="year">2026</span> Stackly Energy. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms &amp; Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/pages.js"></script>
+</body>
+</html>

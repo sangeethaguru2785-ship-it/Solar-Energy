@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Stackly Solar Energy</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230F2E1D'/><circle cx='50' cy='50' r='24' fill='%23FFC93C'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <div class="auth-wrap">
+
+        <aside class="auth-hero">
+            <span class="hero-orb-a"></span>
+            <span class="hero-orb-b"></span>
+            <span class="hero-ring"></span>
+
+            <div class="hero-brand">
+                <img src="images/logo.png" alt="Stackly Solar">
+            </div>
+
+            <div class="hero-mid">
+                <h1>Welcome back to a <span>brighter</span>, cleaner tomorrow.</h1>
+                <p>Sign in to track your solar production, manage installations, monitor savings and stay in control of your clean energy — all in one place.</p>
+                <ul class="hero-points">
+                    <li><i class="fa-solid fa-chart-line"></i>Real-time energy &amp; savings dashboard</li>
+                    <li><i class="fa-solid fa-screwdriver-wrench"></i>Track installations from quote to switch-on</li>
+                    <li><i class="fa-solid fa-shield-halved"></i>Bank-grade security on every session</li>
+                </ul>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hstat"><strong>25k+</strong><small>Installs</small></div>
+                <div class="hstat"><strong>98%</strong><small>Satisfaction</small></div>
+                <div class="hstat"><strong>1.2 GWh</strong><small>Generated</small></div>
+            </div>
+        </aside>
+
+        <main class="auth-panel">
+            <a href="index.html" class="back-site"><i class="fa-solid fa-arrow-left"></i> Back to website</a>
+
+            <div class="panel-brand">
+                <a href="index.html"><img src="images/logo.png" alt="Stackly Solar"></a>
+            </div>
+
+            <div class="auth-card">
+                <div class="auth-head">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to your Stackly account to continue.</p>
+                </div>
+
+                <label class="role-label">I am signing in as</label>
+                <div class="role-cards">
+                    <button type="button" class="role-card active" data-role="user">
+                        <span class="rc-ico"><i class="fa-solid fa-house-user"></i></span>
+                        <span class="rc-txt"><strong>User</strong><small>Homeowner access</small></span>
+                        <span class="rc-check"><i class="fa-solid fa-check"></i></span>
+                    </button>
+                    <button type="button" class="role-card" data-role="admin">
+                        <span class="rc-ico"><i class="fa-solid fa-user-gear"></i></span>
+                        <span class="rc-txt"><strong>Admin</strong><small>Full system control</small></span>
+                        <span class="rc-check"><i class="fa-solid fa-check"></i></span>
+                    </button>
+                </div>
+
+                <form id="loginForm" novalidate>
+                    <div class="f-group">
+                        <label class="f-label" for="lgEmail">Email Address</label>
+                        <input type="email" id="lgEmail" class="f-control" placeholder="you@example.com" autocomplete="email">
+                        <span class="err-msg"></span>
+                    </div>
+
+                    <div class="f-group">
+                        <label class="f-label" for="lgPass">Password</label>
+                        <div class="pw-wrap">
+                            <input type="password" id="lgPass" class="f-control" placeholder="Enter your password" autocomplete="current-password">
+                            <button type="button" class="pw-eye" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                        <span class="err-msg"></span>
+                    </div>
+
+                    <div class="row-between">
+                        <label class="remember">
+                            <input type="checkbox" id="rememberMe"> Remember me
+                        </label>
+                        <a href="#" class="forgot-link" data-bs-toggle="modal" data-bs-target="#forgotModal">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" id="loginBtn" class="btn-auth">
+                        Login <i class="fa-solid fa-right-to-bracket"></i>
+                    </button>
+                </form>
+
+                <p class="auth-alt">New to Stackly? <a href="signup.html">Create an account</a></p>
+                <p class="demo-hint"><i class="fa-solid fa-circle-info"></i> Demo mode — any valid credentials will work.</p>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal fade" id="forgotModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content adm-modal" style="padding:30px 28px">
+                <div class="auth-head" style="margin-bottom:18px">
+                    <h2 style="font-size:22px">Reset Password</h2>
+                    <p style="margin-bottom:0">Enter your email and we'll send you a reset link.</p>
+                </div>
+                <form id="forgotForm" novalidate>
+                    <div class="f-group">
+                        <label class="f-label" for="fpEmail">Email Address</label>
+                        <input type="email" id="fpEmail" class="f-control" placeholder="you@example.com">
+                        <span class="err-msg"></span>
+                    </div>
+                    <button type="submit" class="btn-auth">Send Reset Link <i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

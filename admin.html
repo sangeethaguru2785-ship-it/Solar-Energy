@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Stackly Solar</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <aside class="adm-sidebar" id="admSidebar">
+        <div class="sb-brand">
+            <img src="images/logo.png" alt="Stackly logo">
+            <span class="sb-brand-tag">Admin Panel</span>
+        </div>
+
+        <nav class="sb-nav">
+            <span class="sb-group">Main</span>
+            <a href="#" class="sb-link active" data-section="dashboard"><i class="fa-solid fa-gauge-high"></i><span>Dashboard</span></a>
+
+            <span class="sb-group">Management</span>
+            <a href="#" class="sb-link" data-section="users"><i class="fa-solid fa-users"></i><span>Users</span><em class="sb-pill" id="navUserCount">0</em></a>
+            <a href="#" class="sb-link" data-section="projects"><i class="fa-solid fa-solar-panel"></i><span>Solar Projects</span></a>
+            <a href="#" class="sb-link" data-section="solutions"><i class="fa-solid fa-lightbulb"></i><span>Solutions</span></a>
+            <a href="#" class="sb-link" data-section="services"><i class="fa-solid fa-briefcase"></i><span>Services</span></a>
+            <a href="#" class="sb-link" data-section="payments"><i class="fa-solid fa-credit-card"></i><span>Payments</span></a>
+            <a href="#" class="sb-link" data-section="reports"><i class="fa-solid fa-chart-line"></i><span>Reports</span></a>
+            <a href="#" class="sb-link" data-section="messages"><i class="fa-solid fa-envelope"></i><span>Messages</span><em class="sb-pill" id="navMsgCount">3</em></a>
+            <a href="#" class="sb-link" data-section="notifications"><i class="fa-regular fa-bell"></i><span>Notifications</span></a>
+
+            <span class="sb-group">Account</span>
+            <a href="#" class="sb-link" data-section="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+            <a href="#" class="sb-link sb-danger" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Logout</span></a>
+        </nav>
+
+        <div class="sb-foot">
+            <a href="index.html" class="sb-back"><i class="fa-solid fa-house-chimney"></i> Go to Home</a>
+            <span>v2.4.1 &bull; Stackly Energy</span>
+        </div>
+    </aside>
+
+    <div class="sb-backdrop" id="sbBackdrop"></div>
+
+    <div class="adm-main">
+        <header class="adm-topbar">
+            <button class="tb-icon-btn" id="menuToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+
+            <div class="tb-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="globalSearch" placeholder="Search anything...">
+            </div>
+
+            <div class="tb-right">
+                <div class="dropdown">
+                    <button class="tb-icon-btn tb-bell" id="notifBtn" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notifications">
+                        <i class="fa-regular fa-bell"></i>
+                        <b class="tb-badge" id="notifBadge">3</b>
+                    </button>
+                    <div class="dropdown-menu notif-menu" id="notifMenu">
+                        <div class="notif-head">
+                            <strong>Notifications</strong>
+                            <button type="button" id="markAllRead">Mark all read</button>
+                        </div>
+                        <div id="notifList" class="notif-list"></div>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="tb-user" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="tb-avatar">MK</span>
+                        <span class="tb-user-meta">
+                            <strong>Maya Chen</strong>
+                            <small>Administrator</small>
+                        </span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end tb-user-menu">
+                        <li><a class="dropdown-item" href="#" data-section="settings"><i class="fa-regular fa-user"></i> My Profile</a></li>
+                        <li><a class="dropdown-item" href="#" data-section="settings"><i class="fa-solid fa-sliders"></i> Preferences</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="#" id="logoutBtn2"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <main class="adm-content">
+
+            <section class="adm-section active" id="sec-dashboard">
+                <div class="sec-head">
+                    <div>
+                        <h2 id="greetTitle">Good Morning, Maya</h2>
+                        <p>Here's what's happening across your solar platform today.</p>
+                    </div>
+                    <div class="sec-actions">
+                        <button class="btn-adm btn-adm-yellow" data-bs-toggle="modal" data-bs-target="#addUserModal"><i class="fa-solid fa-plus"></i> Add User</button>
+                    </div>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-ico si-green"><i class="fa-solid fa-users"></i></div>
+                        <div class="stat-info">
+                            <small>Total Users</small>
+                            <h3 data-count="0" id="stUsers">0</h3>
+                            <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +12.4% this month</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-ico si-yellow"><i class="fa-solid fa-solar-panel"></i></div>
+                        <div class="stat-info">
+                            <small>Solar Projects</small>
+                            <h3 data-count="0" id="stProjects">0</h3>
+                            <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +3 new this week</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-ico si-green"><i class="fa-solid fa-briefcase"></i></div>
+                        <div class="stat-info">
+                            <small>Active Services</small>
+                            <h3 data-count="0" id="stServices">0</h3>
+                            <span class="stat-trend"><i class="fa-regular fa-clock"></i> live sync</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-ico si-yellow"><i class="fa-solid fa-dollar-sign"></i></div>
+                        <div class="stat-info">
+                            <small>Total Revenue</small>
+                            <h3 data-count="0" id="stRevenue">$0</h3>
+                            <span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +18.2% vs last year</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mt-1">
+                    <div class="col-xl-8">
+                        <div class="panel">
+                            <div class="panel-head">
+                                <div>
+                                    <h5>Revenue Overview</h5>
+                                    <small>Gross revenue across all verticals</small>
+                                </div>
+                                <div class="chart-tabs" id="revTabs">
+                                    <button class="ctab active" data-range="12M">12M</button>
+                                    <button class="ctab" data-range="6M">6M</button>
+                                    <button class="ctab" data-range="30D">30D</button>
+                                </div>
+                            </div>
+                            <div class="chart-wrap"><canvas id="revenueChart"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="panel h-100">
+                            <div class="panel-head">
+                                <div>
+                                    <h5>User Growth</h5>
+                                    <small>New registrations per month</small>
+                                </div>
+                            </div>
+                            <div class="chart-wrap"><canvas id="usersChart"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mt-1">
+                    <div class="col-xl-7">
+                        <div class="panel">
+                            <div class="panel-head">
+                                <div><h5>Recent Activities</h5><small>Latest platform events</small></div>
+                                <button class="btn-adm btn-adm-ghost" id="actRefresh" aria-label="Refresh activities"><i class="fa-solid fa-rotate"></i></button>
+                            </div>
+                            <ul class="act-list" id="actList"></ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-5">
+                        <div class="panel">
+                            <div class="panel-head">
+                                <div><h5>Top Performing Projects</h5><small>By energy output</small></div>
+                            </div>
+                            <ul class="top-list" id="topProjects"></ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="adm-section" id="sec-users">
+                <div class="sec-head">
+                    <div>
+                        <h2>User Management</h2>
+                        <p>Manage customers, installers and administrators.</p>
+                    </div>
+                    <div class="sec-actions">
+                        <button class="btn-adm btn-adm-yellow" data-bs-toggle="modal" data-bs-target="#addUserModal"><i class="fa-solid fa-user-plus"></i> Add User</button>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-tools">
+                        <div class="tool-search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="userSearch" placeholder="Search by name or email...">
+                        </div>
+                        <select class="form-select-adm" id="userRoleFilter">
+                            <option value="all">All Roles</option>
+                            <option value="customer">Customer</option>
+                            <option value="installer">Installer</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        <select class="form-select-adm" id="userStatusFilter">
+                            <option value="all">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Pending</option>
+                            <option value="suspended">Suspended</option>
+                        </select>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table adm-table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Role</th>
+                                    <th>Projects</th>
+                                    <th>Joined</th>
+                                    <th>Status</th>
+                                    <th class="text-end">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="userTableBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="panel-foot" id="userCountInfo">Showing 0 users</div>
+                </div>
+            </section>
+
+            <section class="adm-section" id="sec-projects">
+                <div class="sec-head">
+                    <div>
+                        <h2>Project Management</h2>
+                        <p>Track installations, capacity and delivery progress.</p>
+                    </div>
+                    <div class="sec-actions">
+                        <button class="btn-adm btn-adm-yellow" data-bs-toggle="modal" data-bs-target="#addProjectModal"><i class="fa-solid fa-plus"></i> New Project</button>
+                    </div>
+                </div>
+
+                <div class="chip-row" id="projChips">
+                    <button class="fchip active" data-filter="all">All</button>
+                    <button class="fchip" data-filter="active">Active</button>
+                    <button class="fchip" data-filter="pending">Pending</button>
+                    <button class="fchip" data-filter="completed">Completed</button>
+                </div>
+
+                <div class="proj-grid" id="projectGrid"></div>
+            </section>
+
+            <section class="adm-section" id="sec-solutions">
+                <div class="sec-head">
+                    <div>
+                        <h2>Solutions</h2>
+                        <p>Performance across every solution line offered on the platform.</p>
+                    </div>
+                </div>
+
+                <div class="sol-grid-adm">
+                    <div class="sol-tile">
+                        <span class="st-ico si-green"><i class="fa-solid fa-house-chimney"></i></span>
+                        <div><h5>Residential Solar</h5><small>1,284 active installs</small></div>
+                        <b>$2.1M</b>
+                    </div>
+                    <div class="sol-tile">
+                        <span class="st-ico si-yellow"><i class="fa-solid fa-building"></i></span>
+                        <div><h5>Commercial Solar</h5><small>312 active installs</small></div>
+                        <b>$6.8M</b>
+                    </div>
+                    <div class="sol-tile">
+                        <span class="st-ico si-green"><i class="fa-solid fa-battery-full"></i></span>
+                        <div><h5>Battery Storage</h5><small>741 active installs</small></div>
+                        <b>$1.9M</b>
+                    </div>
+                    <div class="sol-tile">
+                        <span class="st-ico si-yellow"><i class="fa-solid fa-charging-station"></i></span>
+                        <div><h5>EV Charging</h5><small>496 charge points live</small></div>
+                        <b>$840k</b>
+                    </div>
+                    <div class="sol-tile">
+                        <span class="st-ico si-green"><i class="fa-solid fa-mountain-sun"></i></span>
+                        <div><h5>Off-Grid Kits</h5><small>168 remote deployments</small></div>
+                        <b>$610k</b>
+                    </div>
+                    <div class="sol-tile">
+                        <span class="st-ico si-yellow"><i class="fa-solid fa-people-group"></i></span>
+                        <div><h5>Community Solar</h5><small>22 shared gardens</small></div>
+                        <b>$1.2M</b>
+                    </div>
+                </div>
+            </section>
+
+            <section class="adm-section" id="sec-services">
+                <div class="sec-head">
+                    <div>
+                        <h2>Service Management</h2>
+                        <p>Toggle offerings live on the public website instantly.</p>
+                    </div>
+                </div>
+                <div class="svc-grid" id="serviceGrid"></div>
+            </section>
+
+            <section class="adm-section" id="sec-payments">
+                <div class="sec-head">
+                    <div>
+                        <h2>Payments</h2>
+                        <p>Transactions, payouts and billing health at a glance.</p>
+                    </div>
+                    <div class="sec-actions">
+                        <button class="btn-adm btn-adm-dark js-export"><i class="fa-solid fa-file-csv"></i> Export</button>
+                    </div>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-ico si-green"><i class="fa-solid fa-circle-check"></i></div>
+                        <div class="stat-info"><small>Collected This Month</small><h3>$184,220</h3><span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +9.6% vs June</span></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-ico si-yellow"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div class="stat-info"><small>Pending Clearance</small><h3>$23,410</h3><span class="stat-trend"><i class="fa-regular fa-clock"></i> 14 invoices awaiting</span></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-ico si-green"><i class="fa-solid fa-rotate-left"></i></div>
+                        <div class="stat-info"><small>Refunds Issued</small><h3>$1,860</h3><span class="stat-trend down"><i class="fa-solid fa-arrow-trend-down"></i> -32% vs June</span></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-ico si-yellow"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <div class="stat-info"><small>Avg. Transaction</small><h3>$412</h3><span class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +4.1%</span></div>
+                    </div>
+                </div>
+
+                <div class="panel mt-4">
+                    <div class="panel-head"><div><h5>Recent Transactions</h5><small>Last 6 payments across all solutions</small></div></div>
+                    <div class="table-responsive">
+                        <table class="table adm-table align-middle">
+                            <thead>
+                                <tr><th>Invoice</th><th>Customer</th><th>Method</th><th>Date</th><th>Status</th><th class="text-end">Amount</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>INV-2043</strong></td><td>Robert Fox</td><td><i class="fa-brands fa-cc-visa me-1"></i>Visa &bull; 4242</td><td>Aug 22, 2026</td><td><span class="badge-st bs-active">paid</span></td><td class="text-end txn-amt">$86.20</td></tr>
+                                <tr><td><strong>INV-2042</strong></td><td>Horizon Corp</td><td><i class="fa-solid fa-building-columns me-1"></i>Wire</td><td>Aug 21, 2026</td><td><span class="badge-st bs-active">paid</span></td><td class="text-end txn-amt">$18,400.00</td></tr>
+                                <tr><td><strong>INV-2041</strong></td><td>Jenny Wilson</td><td><i class="fa-brands fa-cc-mastercard me-1"></i>MC &bull; 8810</td><td>Aug 20, 2026</td><td><span class="badge-st bs-pending">pending</span></td><td class="text-end txn-amt">$124.50</td></tr>
+                                <tr><td><strong>INV-2040</strong></td><td>GreenGrid LLC</td><td><i class="fa-brands fa-cc-visa me-1"></i>Visa &bull; 9032</td><td>Aug 19, 2026</td><td><span class="badge-st bs-active">paid</span></td><td class="text-end txn-amt">$2,150.00</td></tr>
+                                <tr><td><strong>INV-2039</strong></td><td>Cameron Williamson</td><td><i class="fa-solid fa-wallet me-1"></i>Wallet</td><td>Aug 18, 2026</td><td><span class="badge-st bs-suspended">refunded</span></td><td class="text-end txn-amt">$310.75</td></tr>
+                                <tr><td><strong>INV-2038</strong></td><td>Sunfield Farms</td><td><i class="fa-solid fa-building-columns me-1"></i>ACH</td><td>Aug 17, 2026</td><td><span class="badge-st bs-active">paid</span></td><td class="text-end txn-amt">$5,890.00</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="adm-section" id="sec-reports">
+                <div class="sec-head">
+                    <div>
+                        <h2>Reports</h2>
+                        <p>Generate and download operational and performance reports.</p>
+                    </div>
+                </div>
+
+                <div class="rep-grid-adm">
+                    <div class="rep-card">
+                        <span class="st-ico si-green"><i class="fa-solid fa-bolt"></i></span>
+                        <h5>Energy Production</h5>
+                        <p>Monthly kWh output per project and portfolio totals.</p>
+                        <button class="btn-adm btn-adm-yellow js-dl"><i class="fa-solid fa-download"></i> Download PDF</button>
+                    </div>
+                    <div class="rep-card">
+                        <span class="st-ico si-yellow"><i class="fa-solid fa-dollar-sign"></i></span>
+                        <h5>Revenue &amp; Billing</h5>
+                        <p>Invoices, collections and outstanding balances summary.</p>
+                        <button class="btn-adm btn-adm-yellow js-dl"><i class="fa-solid fa-download"></i> Download PDF</button>
+                    </div>
+                    <div class="rep-card">
+                        <span class="st-ico si-green"><i class="fa-solid fa-leaf"></i></span>
+                        <h5>Environmental Impact</h5>
+                        <p>CO&#8322; offset, trees equivalent and fleet-wide savings.</p>
+                        <button class="btn-adm btn-adm-yellow js-dl"><i class="fa-solid fa-download"></i> Download PDF</button>
+                    </div>
+                    <div class="rep-card">
+                        <span class="st-ico si-yellow"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+                        <h5>Maintenance Log</h5>
+                        <p>Service visits, faults raised and resolution times.</p>
+                        <button class="btn-adm btn-adm-yellow js-dl"><i class="fa-solid fa-download"></i> Download PDF</button>
+                    </div>
+                </div>
+
+                <div class="panel mt-4">
+                    <div class="panel-head"><div><h5>Recently Generated</h5><small>Reports created in the last 30 days</small></div></div>
+                    <div class="table-responsive">
+                        <table class="table adm-table align-middle">
+                            <thead>
+                                <tr><th>Report</th><th>Type</th><th>Period</th><th>Created</th><th class="text-end">Size</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Production-July.pdf</strong></td><td>Energy Production</td><td>Jul 2026</td><td>Aug 03, 2026</td><td class="text-end">2.4 MB</td></tr>
+                                <tr><td><strong>Billing-Summary-Q2.xlsx</strong></td><td>Revenue &amp; Billing</td><td>Q2 2026</td><td>Jul 12, 2026</td><td class="text-end">880 KB</td></tr>
+                                <tr><td><strong>Impact-Report-H1.pdf</strong></td><td>Environmental Impact</td><td>H1 2026</td><td>Jul 05, 2026</td><td class="text-end">5.1 MB</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="adm-section" id="sec-messages">
+                <div class="sec-head">
+                    <div>
+                        <h2>Messages</h2>
+                        <p>Customer inquiries and internal conversations.</p>
+                    </div>
+                    <div class="sec-actions">
+                        <button class="btn-adm btn-adm-dark" id="msgAllRead"><i class="fa-solid fa-check-double"></i> Mark All Read</button>
+                    </div>
+                </div>
+
+                <div class="msg-list-adm" id="msgList">
+                    <div class="msg-item unread">
+                        <span class="u-avatar ua-1">RF</span>
+                        <div class="msg-body">
+                            <div class="msg-top"><strong>Robert Fox</strong><small>12 min ago</small></div>
+                            <h6>Panel cleaning schedule?</h6>
+                            <p>Hi, when can I expect the next maintenance visit for my rooftop array? The app shows it is overdue&hellip;</p>
+                        </div>
+                        <span class="msg-dot"></span>
+                    </div>
+                    <div class="msg-item unread">
+                        <span class="u-avatar ua-2">JW</span>
+                        <div class="msg-body">
+                            <div class="msg-top"><strong>Jenny Wilson</strong><small>1 hour ago</small></div>
+                            <h6>Invoice INV-2041 query</h6>
+                            <p>Could you clarify the grid export credit line on my latest invoice? It looks lower than expected.</p>
+                        </div>
+                        <span class="msg-dot"></span>
+                    </div>
+                    <div class="msg-item unread">
+                        <span class="u-avatar ua-3">DL</span>
+                        <div class="msg-body">
+                            <div class="msg-top"><strong>Devon Lane</strong><small>Yesterday</small></div>
+                            <h6>Crew availability next week</h6>
+                            <p>We have three installations queued in Austin. Can we lock the same crew for Tuesday and Wednesday?</p>
+                        </div>
+                        <span class="msg-dot"></span>
+                    </div>
+                    <div class="msg-item">
+                        <span class="u-avatar ua-4">CH</span>
+                        <div class="msg-body">
+                            <div class="msg-top"><strong>Courtney Henry</strong><small>Mon</small></div>
+                            <h6>Battery restock confirmed</h6>
+                            <p>The 42 Powerwall units arrived and passed inspection. Storage room B is now at full capacity.</p>
+                        </div>
+                        <span class="msg-dot"></span>
+                    </div>
+                    <div class="msg-item">
+                        <span class="u-avatar ua-5">WW</span>
+                        <div class="msg-body">
+                            <div class="msg-top"><strong>Wade Warren</strong><small>Sat</small></div>
+                            <h6>Welcome onboarding</h6>
+                            <p>Thanks for the warm welcome! Excited to start the site survey for my 9.6 kWp system this month.</p>
+                        </div>
+                        <span class="msg-dot"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="adm-section" id="sec-notifications">
+                <div class="sec-head">
+                    <div>
+                        <h2>Notifications</h2>
+                        <p>Everything that needs your attention, in one stream.</p>
+                    </div>
+                    <div class="sec-actions">
+                        <button class="btn-adm btn-adm-dark" id="pgMarkAllRead"><i class="fa-solid fa-check-double"></i> Mark All Read</button>
+                    </div>
+                </div>
+
+                <div class="ntf-page" id="pgNotifList">
+                    <div class="ntf-row unread">
+                        <span class="notif-dot nd-green"><i class="fa-solid fa-user-plus"></i></span>
+                        <div><strong>New user registered</strong><small>Esther Howard created a customer account. &bull; 10 min ago</small></div>
+                        <span class="ntf-unread-dot"></span>
+                    </div>
+                    <div class="ntf-row unread">
+                        <span class="notif-dot nd-yellow"><i class="fa-solid fa-circle-exclamation"></i></span>
+                        <div><strong>Quote awaiting approval</strong><small>Quote Q-2841 for Maple Residence needs review. &bull; 1 hour ago</small></div>
+                        <span class="ntf-unread-dot"></span>
+                    </div>
+                    <div class="ntf-row unread">
+                        <span class="notif-dot nd-green"><i class="fa-solid fa-plug-circle-bolt"></i></span>
+                        <div><strong>System export complete</strong><small>Monthly production report ready to download. &bull; Today, 08:20</small></div>
+                        <span class="ntf-unread-dot"></span>
+                    </div>
+                    <div class="ntf-row">
+                        <span class="notif-dot nd-yellow"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+                        <div><strong>Maintenance scheduled</strong><small>Inverter firmware update this Sunday 02:00 UTC. &bull; Mon</small></div>
+                        <span class="ntf-unread-dot"></span>
+                    </div>
+                    <div class="ntf-row">
+                        <span class="notif-dot nd-green"><i class="fa-solid fa-truck-fast"></i></span>
+                        <div><strong>Shipment delivered</strong><small>24 panels delivered to Oakwood Rooftop site. &bull; Fri</small></div>
+                        <span class="ntf-unread-dot"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="adm-section" id="sec-settings">
+                <div class="sec-head">
+                    <div>
+                        <h2>Settings</h2>
+                        <p>Manage your administrator account and platform preferences.</p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="panel profile-panel text-center">
+                            <span class="prof-avatar">MK</span>
+                            <h4 class="mt-3 mb-1">Maya Chen</h4>
+                            <p class="mb-1">maya.chen@stackly.energy</p>
+                            <span class="badge-role"><i class="fa-solid fa-shield-halved"></i> Administrator</span>
+                            <div class="prof-stats">
+                                <div><strong>214</strong><small>Logins</small></div>
+                                <div><strong>38</strong><small>Audits</small></div>
+                                <div><strong>5y</strong><small>Tenure</small></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="panel mb-4">
+                            <div class="panel-head"><div><h5>Profile Information</h5><small>Update your personal details</small></div></div>
+                            <form id="profileForm" class="p-form" novalidate>
+                                <div class="row g-3">
+                                    <div class="col-md-6"><label class="f-label" for="pfName">Full Name</label><input type="text" class="f-input" id="pfName" value="Maya Chen"></div>
+                                    <div class="col-md-6"><label class="f-label" for="pfEmail">Email Address</label><input type="email" class="f-input" id="pfEmail" value="maya.chen@stackly.energy"></div>
+                                    <div class="col-md-6"><label class="f-label" for="pfPhone">Phone</label><input type="tel" class="f-input" id="pfPhone" value="+1 (800) 555-0102"></div>
+                                    <div class="col-md-6"><label class="f-label" for="pfRole">Job Title</label><input type="text" class="f-input" id="pfRole" value="Founder &amp; CEO"></div>
+                                </div>
+                                <button type="submit" class="btn-adm btn-adm-yellow mt-4"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+                            </form>
+                        </div>
+
+                        <div class="panel mb-4">
+                            <div class="panel-head"><div><h5>Change Password</h5><small>Use a strong, unique password</small></div></div>
+                            <form id="passForm" class="p-form" novalidate>
+                                <div class="row g-3">
+                                    <div class="col-md-4"><label class="f-label" for="pwCur">Current Password</label><input type="password" class="f-input" id="pwCur" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"></div>
+                                    <div class="col-md-4"><label class="f-label" for="pwNew">New Password</label><input type="password" class="f-input" id="pwNew" placeholder="Min. 8 characters"></div>
+                                    <div class="col-md-4"><label class="f-label" for="pwConf">Confirm Password</label><input type="password" class="f-input" id="pwConf" placeholder="Repeat password"></div>
+                                </div>
+                                <button type="submit" class="btn-adm btn-adm-dark mt-4"><i class="fa-solid fa-lock"></i> Update Password</button>
+                            </form>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-head"><div><h5>Notification Preferences</h5><small>Choose what you get alerted about</small></div></div>
+                            <div class="pref-list">
+                                <label class="pref-row">
+                                    <span><strong>New project requests</strong><small>Email me when a quote is requested</small></span>
+                                    <span class="form-check form-switch"><input class="form-check-input pref-toggle" type="checkbox" checked data-key="prefProjects"></span>
+                                </label>
+                                <label class="pref-row">
+                                    <span><strong>User sign-ups</strong><small>Alert when a new account registers</small></span>
+                                    <span class="form-check form-switch"><input class="form-check-input pref-toggle" type="checkbox" checked data-key="prefSignups"></span>
+                                </label>
+                                <label class="pref-row">
+                                    <span><strong>Weekly revenue digest</strong><small>Performance summary every Monday</small></span>
+                                    <span class="form-check form-switch"><input class="form-check-input pref-toggle" type="checkbox" data-key="prefDigest"></span>
+                                </label>
+                                <label class="pref-row">
+                                    <span><strong>Maintenance alerts</strong><small>System health and downtime notices</small></span>
+                                    <span class="form-check form-switch"><input class="form-check-input pref-toggle" type="checkbox" checked data-key="prefMaintenance"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="adm-footer">
+            <span>&copy; 2026 Stackly Energy. All rights reserved.</span>
+            <span>Crafted with <i class="fa-solid fa-sun"></i> for a brighter planet</span>
+        </footer>
+    </div>
+
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content adm-modal">
+                <div class="modal-header">
+                    <h5><i class="fa-solid fa-user-plus"></i> Add New User</h5>
+                    <button type="button" class="btn-close-adm" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <form id="addUserForm" novalidate>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-md-6"><label class="f-label" for="nuName">Full Name *</label><input type="text" class="f-input" id="nuName" required placeholder="Jane Doe"></div>
+                            <div class="col-md-6"><label class="f-label" for="nuEmail">Email Address *</label><input type="email" class="f-input" id="nuEmail" required placeholder="jane@email.com"></div>
+                            <div class="col-md-6">
+                                <label class="f-label" for="nuRole">Role</label>
+                                <select class="f-input" id="nuRole"><option value="customer">Customer</option><option value="installer">Installer</option><option value="admin">Admin</option></select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="f-label" for="nuStatus">Status</label>
+                                <select class="f-input" id="nuStatus"><option value="active">Active</option><option value="pending">Pending</option><option value="suspended">Suspended</option></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-adm btn-adm-ghost" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn-adm btn-adm-yellow"><i class="fa-solid fa-check"></i> Create User</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addProjectModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content adm-modal">
+                <div class="modal-header">
+                    <h5><i class="fa-solid fa-solar-panel"></i> New Project</h5>
+                    <button type="button" class="btn-close-adm" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <form id="addProjectForm" novalidate>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-md-6"><label class="f-label" for="pjName">Project Name *</label><input type="text" class="f-input" id="pjName" required placeholder="Maple Residence"></div>
+                            <div class="col-md-6"><label class="f-label" for="pjClient">Client *</label><input type="text" class="f-input" id="pjClient" required placeholder="Robert Fox"></div>
+                            <div class="col-md-6"><label class="f-label" for="pjCap">Capacity (kWp)</label><input type="number" class="f-input" id="pjCap" value="8" min="1"></div>
+                            <div class="col-md-6">
+                                <label class="f-label" for="pjStatus">Status</label>
+                                <select class="f-input" id="pjStatus"><option value="pending">Pending</option><option value="active">Active</option><option value="completed">Completed</option></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-adm btn-adm-ghost" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn-adm btn-adm-yellow"><i class="fa-solid fa-check"></i> Create Project</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmLogoutModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content adm-modal text-center">
+                <div class="modal-body p-4">
+                    <div class="logout-ico"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+                    <h5 class="mt-3">Log out of Stackly Admin?</h5>
+                    <p>You can sign back in anytime.</p>
+                    <div class="d-flex gap-2 justify-content-center mt-4">
+                        <button type="button" class="btn-adm btn-adm-ghost" data-bs-dismiss="modal">Cancel</button>
+                        <a href="login.html" class="btn-adm btn-adm-dark">Yes, Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-box" id="toastBox"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
