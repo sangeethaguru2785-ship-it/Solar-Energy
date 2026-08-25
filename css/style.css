@@ -483,7 +483,7 @@ p {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('../images/hero-solar-closeup.jpg');
+    background-image: url('../images/footer.webp');
     background-size: cover;
     background-position: center;
     opacity: 0.14;

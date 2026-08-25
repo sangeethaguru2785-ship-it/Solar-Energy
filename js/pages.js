@@ -5,7 +5,6 @@
     document.addEventListener('DOMContentLoaded', function () {
         initPageHero();
         initSpotlights();
-        initFilters();
         initSolutionModal();
         initEstimator();
         initContactForm();
@@ -38,37 +37,10 @@
         });
     }
 
-    function initFilters() {
-        var bars = document.querySelectorAll('[data-filter-group]');
-        Array.prototype.forEach.call(bars, function (bar) {
-            var chips = bar.querySelectorAll('[data-filter]');
-            var gridId = bar.getAttribute('data-filter-group');
-            var grid = document.getElementById(gridId);
-            if (!grid) return;
-            var items = grid.querySelectorAll('[data-category]');
-            Array.prototype.forEach.call(chips, function (chip) {
-                chip.addEventListener('click', function () {
-                    var filter = chip.getAttribute('data-filter');
-                    Array.prototype.forEach.call(chips, function (c) {
-                        c.classList.toggle('active', c === chip);
-                        c.setAttribute('aria-selected', String(c === chip));
-                    });
-                    Array.prototype.forEach.call(items, function (item) {
-                        var show = filter === 'all' || item.getAttribute('data-category') === filter;
-                        item.classList.toggle('card-hide', !show);
-                        if (show && animOK) {
-                            gsap.fromTo(item, { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out' });
-                        }
-                    });
-                });
-            });
-        });
-    }
-
     var SOL_DATA = {
         'sol-residential': {
             tag: 'Residential',
-            img: 'images/modern-home.jpg',
+            img: 'images/modern-home.webp',
             title: 'Home Solar Bundle',
             desc: 'A complete rooftop ecosystem: Tier-1 black panels, a smart hybrid inverter and real-time app control - engineered to erase your household bill and installed in a single day.',
             specs: ['fa-bolt|4-12 kW systems', 'fa-piggy-bank|5-7 yr payback', 'fa-shield-halved|25 yr warranty'],
@@ -76,7 +48,7 @@
         },
         'sol-storage': {
             tag: 'Storage',
-            img: 'images/battery-wall.jpg',
+            img: 'images/battery-wall.webp',
             title: 'Solar + Battery Backup',
             desc: 'Bank your sunshine in an elegant wall-mounted lithium reservoir. When the grid blinks, your home does not - switchover is faster than a light bulb flicker.',
             specs: ['fa-battery-full|10-40 kWh modular', 'fa-plug-circle-bolt|10 ms switchover', 'fa-arrows-rotate|6,000 cycles'],
@@ -84,7 +56,7 @@
         },
         'sol-commercial': {
             tag: 'Commercial',
-            img: 'images/hero-solar-aerial.jpg',
+            img: 'images/hero-solar-aerial.webp',
             title: 'Business Rooftop Program',
             desc: 'Turn idle rooftops and parking into inflation-proof power plants. We handle engineering, incentives and interconnection while you watch operating costs fall.',
             specs: ['fa-industry|50 kW - 5 MW', 'fa-file-contract|PPA or lease', 'fa-percent|30% ITC handled'],
@@ -92,7 +64,7 @@
         },
         'sol-ev': {
             tag: 'EV',
-            img: 'images/ev-charging.jpg',
+            img: 'images/ev-charging.webp',
             title: 'Carport & EV Hub',
             desc: 'Fuel your vehicles with pure sunlight. Solar canopies with load-balanced Level 2 or DC-fast charging for homes, workplaces and fleets.',
             specs: ['fa-charging-station|7-22 kW chargers', 'fa-scale-balanced|Load balanced', 'fa-solar-panel|Solar paired'],
@@ -100,7 +72,7 @@
         },
         'sol-offgrid': {
             tag: 'Off-Grid',
-            img: 'images/hero-solar-closeup.jpg',
+            img: 'images/hero-solar-closeup.webp',
             title: 'Off-Grid & Cabin Kits',
             desc: 'Total independence in a crate. Pre-engineered hybrid kits with lithium storage and generator sync, delivered anywhere the grid forgot to go.',
             specs: ['fa-mountain-sun|3-15 kW hybrid', 'fa-generator|Generator sync', 'fa-snowflake|All-climate rated'],
@@ -108,7 +80,7 @@
         },
         'sol-community': {
             tag: 'Utility',
-            img: 'images/hero-sun-flare.jpg',
+            img: 'images/hero-sun-flare.webp',
             title: 'Community & Utility Solar',
             desc: 'Gigawatt thinking, community sized. Subscription-based solar gardens that let any renter or business buy into clean power - no roof required.',
             specs: ['fa-city|1-80 MW gardens', 'fa-users|Subscription model', 'fa-map-location-dot|GIS siting'],

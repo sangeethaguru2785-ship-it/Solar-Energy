@@ -24,7 +24,7 @@ body {
 
 body {
     font-family: 'Inter', sans-serif;
-    background: var(--off-white);
+    background: var(--off-white) url('../images/Errors.webp') center/cover no-repeat;
     color: var(--ink);
     overflow-x: hidden;
 }
@@ -67,6 +67,15 @@ h1 {
     background-size: 44px 44px;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 78%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 78%);
+}
+
+.nf-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 46, 29, 0.85) 0%, rgba(15, 46, 29, 0.7) 100%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .nf-orb {
@@ -189,13 +198,11 @@ h1 {
 
 .digit {
     font-family: 'Outfit', sans-serif;
-    font-weight: 800;
+    font-weight: 900;
     font-size: clamp(118px, 25vw, 240px);
     line-height: 1;
-    background: linear-gradient(175deg, var(--deep-2) 8%, var(--deep) 60%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--off-white);
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
     user-select: none;
     animation: riseIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -277,9 +284,9 @@ h1 {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 201, 60, 0.18);
-    border: 1px solid rgba(237, 164, 8, 0.45);
-    color: #B57F00;
+    background: rgba(255, 201, 60, 0.25);
+    border: 1px solid rgba(255, 201, 60, 0.6);
+    color: var(--solar);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2.2px;
@@ -304,7 +311,8 @@ h1 {
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
     font-size: clamp(27px, 4.2vw, 44px);
-    color: var(--ink);
+    color: var(--off-white);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
     letter-spacing: -0.5px;
     margin-bottom: 15px;
     animation: riseIn 0.65s 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -315,8 +323,9 @@ h1 {
 }
 
 .nf-text {
-    color: var(--muted);
-    font-size: 15.5px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 16px;
+    font-weight: 500;
     line-height: 1.75;
     max-width: 520px;
     margin: 0 auto 32px;
@@ -371,16 +380,16 @@ h1 {
 
 .btn-nf.ghost {
     background: transparent;
-    border-color: rgba(28, 74, 46, 0.4);
-    color: var(--deep-2);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: var(--off-white);
 }
 
 .btn-nf.ghost:hover {
-    background: var(--deep);
-    border-color: var(--deep);
-    color: var(--off-white);
+    background: var(--off-white);
+    border-color: var(--off-white);
+    color: var(--deep);
     transform: translateY(-3px);
-    box-shadow: 0 16px 30px rgba(15, 46, 29, 0.28);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25);
 }
 
 .btn-nf.ghost:hover i {
@@ -405,16 +414,16 @@ h1 {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: var(--line);
+    background: rgba(255, 255, 255, 0.4);
 }
 
 .nf-links a {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--leaf);
-    border: 1px solid var(--line);
-    color: var(--deep-2);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--off-white);
     text-decoration: none;
     font-size: 13.3px;
     font-weight: 600;
@@ -429,11 +438,11 @@ h1 {
 }
 
 .nf-links a:hover {
-    background: var(--white);
+    background: var(--solar);
     border-color: var(--solar);
-    color: var(--ink);
+    color: var(--deep);
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(237, 164, 8, 0.16);
+    box-shadow: 0 10px 20px rgba(255, 201, 60, 0.3);
 }
 
 .nf-links a:hover i {
@@ -446,19 +455,19 @@ h1 {
     left: 0;
     right: 0;
     text-align: center;
-    color: #96A48D;
+    color: rgba(255, 255, 255, 0.65);
     font-size: 12.3px;
     z-index: 2;
 }
 
 .nf-footer a {
-    color: var(--deep-2);
+    color: rgba(255, 255, 255, 0.85);
     font-weight: 600;
     text-decoration: none;
 }
 
 .nf-footer a:hover {
-    color: var(--solar-deep);
+    color: var(--solar);
 }
 
 @keyframes riseIn {

@@ -739,7 +739,7 @@ html.anim .hero-title {
 .parallax-bg {
     position: absolute;
     inset: 0;
-    background-image: url('../images/wind-sunset.jpg');
+    background-image: url('../images/wind-sunset.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -767,41 +767,6 @@ html.anim .hero-title {
 
 .tech-showcase {
     margin-top: 20px;
-}
-
-.tech-nav {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    margin-bottom: 44px;
-    flex-wrap: wrap;
-}
-
-.tech-tab {
-    padding: 13px 30px;
-    background: var(--white);
-    border: 1px solid rgba(18, 41, 27, 0.12);
-    border-radius: 50px;
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--dark-text);
-    cursor: pointer;
-    transition: var(--transition);
-    box-shadow: var(--shadow-sm);
-}
-
-.tech-tab:hover {
-    border-color: var(--primary-green);
-    color: var(--accent-green);
-    transform: translateY(-3px);
-}
-
-.tech-tab.active {
-    background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
-    color: var(--white);
-    border-color: transparent;
-    box-shadow: 0 12px 26px rgba(255, 201, 60, 0.35);
 }
 
 .tech-showcase-inner {
@@ -995,7 +960,7 @@ html.anim .hero-title {
     position: relative;
     background:
         linear-gradient(rgba(7, 24, 15, 0.93), rgba(7, 24, 15, 0.93)),
-        url('../images/hero-sun-flare.jpg') center/cover no-repeat fixed;
+        url('../images/hero-sun-flare.webp') center/cover no-repeat fixed;
     overflow: hidden;
 }
 
@@ -1139,133 +1104,6 @@ html.anim .hero-title {
     to { transform: translateX(calc(-50% - 14px)); }
 }
 
-.magazine-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 36px;
-}
-
-.mag-featured {
-    position: relative;
-    border-radius: 26px;
-    overflow: hidden;
-    min-height: 520px;
-    cursor: pointer;
-}
-
-.mag-featured > img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.mag-featured:hover > img {
-    transform: scale(1.07);
-}
-
-.mag-featured::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(6, 19, 11, 0.88) 10%, rgba(6, 19, 11, 0.15) 65%);
-    transition: background 0.4s ease;
-}
-
-.mag-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 44px;
-    z-index: 2;
-    color: var(--white);
-}
-
-.mag-meta {
-    display: flex;
-    gap: 14px;
-    align-items: center;
-    margin-bottom: 14px;
-}
-
-.mag-tag {
-    background: var(--primary-green);
-    padding: 5px 13px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: var(--brand-deep);
-}
-
-.mag-date {
-    font-size: 14px;
-    opacity: 0.85;
-}
-
-.mag-content h3 {
-    font-size: 32px;
-    color: var(--white);
-    transition: color 0.3s ease;
-}
-
-.mag-featured:hover .mag-content h3 {
-    color: var(--primary-green);
-}
-
-.mag-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.mag-card {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    background: var(--white);
-    padding: 18px;
-    border-radius: 18px;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(18, 41, 27, 0.05);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.mag-card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateX(10px);
-    border-color: rgba(255, 201, 60, 0.35);
-}
-
-.mag-card img {
-    width: 128px;
-    height: 118px;
-    border-radius: 13px;
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
-.mag-card-content h4 {
-    font-size: 18px;
-    margin: 9px 0 7px;
-    line-height: 1.35;
-    transition: color 0.3s ease;
-}
-
-.mag-card:hover .mag-card-content h4 {
-    color: var(--accent-green);
-}
-
-.mag-card .mag-date {
-    color: var(--text-muted);
-    opacity: 1;
-}
-
 @media (max-width: 1200px) {
     .service-card {
         flex: 0 0 calc((100% - 30px) / 2);
@@ -1283,10 +1121,6 @@ html.anim .hero-title {
 @media (max-width: 992px) {
     .service-card {
         flex: 0 0 calc((100% - 30px) / 2);
-    }
-
-    .magazine-layout {
-        grid-template-columns: 1fr;
     }
 
     .work-process-grid {
@@ -1451,28 +1285,6 @@ html.anim .hero-title {
 
     .work-process-col {
         flex: 0 0 100%;
-    }
-
-    .mag-featured {
-        min-height: 420px;
-    }
-
-    .mag-content {
-        padding: 28px;
-    }
-
-    .mag-content h3 {
-        font-size: 24px;
-    }
-
-    .mag-card {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .mag-card img {
-        width: 100%;
-        height: 190px;
     }
 
     .marquee-track img {

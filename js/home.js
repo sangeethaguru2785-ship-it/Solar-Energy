@@ -79,28 +79,28 @@
 
         var data = [
             {
-                img: 'images/hero-solar-closeup.jpg',
+                img: 'images/hero-solar-closeup.webp',
                 label: 'Photovoltaic Technology',
                 title: 'Next-Gen N-Type Cells',
                 desc: 'Engineered like diamonds. Our N-type monocrystalline cells squeeze power from the faintest rays of dawn and keep producing long after the evening glow.',
                 features: ['22.8% conversion efficiency', 'Anti-reflective storm glass', '25-year performance warranty']
             },
             {
-                img: 'images/engineer-inspect.jpg',
+                img: 'images/engineer-inspect.webp',
                 label: 'Power Electronics',
                 title: 'Smart Hybrid Inverters',
                 desc: 'The intelligent heart of your system. Hybrid inverters orchestrate panels, batteries and the grid in real time for maximum self-consumption.',
                 features: ['97.8% peak efficiency', 'Seamless 10ms blackout switchover', 'Built-in emergency backup power']
             },
             {
-                img: 'images/battery-wall.jpg',
+                img: 'images/battery-wall.webp',
                 label: 'Energy Storage',
                 title: 'Modular Lithium Walls',
                 desc: 'Bank your sunshine behind an elegant wall-mounted reservoir that powers your nights and shields you from rising tariffs.',
                 features: ['10-40kWh scalable capacity', '6,000+ cycle lifespan', 'Storm-watch automatic charging']
             },
             {
-                img: 'images/modern-home.jpg',
+                img: 'images/modern-home.webp',
                 label: 'Smart Living',
                 title: 'AI Energy Monitoring',
                 desc: 'A digital brain for your roof. Panel-level analytics learn your habits, predict issues before they happen and optimize every watt you produce.',

@@ -64,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('../images/hero-sun-flare.jpg');
+    background-image: url('../images/hero-sun-flare.webp');
     background-size: cover;
     background-position: center;
     opacity: 0.16;
