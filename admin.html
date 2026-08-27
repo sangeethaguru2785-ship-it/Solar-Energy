@@ -49,40 +49,32 @@
 
     <div class="adm-main">
         <header class="adm-topbar">
-            <button class="tb-icon-btn" id="menuToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
-
-            <div class="tb-search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="globalSearch" placeholder="Search anything...">
-            </div>
-
+            <button id="menuToggle" class="tb-menu" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
             <div class="tb-right">
                 <div class="dropdown">
-                    <button class="tb-icon-btn tb-bell" id="notifBtn" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notifications">
-                        <i class="fa-regular fa-bell"></i>
-                        <b class="tb-badge" id="notifBadge">3</b>
+                    <button class="tb-icon-btn" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notifications">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="tb-badge" id="notifBadge">3</span>
                     </button>
-                    <div class="dropdown-menu notif-menu" id="notifMenu">
+                    <div class="dropdown-menu dropdown-menu-end notif-menu">
                         <div class="notif-head">
                             <strong>Notifications</strong>
-                            <button type="button" id="markAllRead">Mark all read</button>
+                            <button id="markAllRead">Mark all read</button>
                         </div>
-                        <div id="notifList" class="notif-list"></div>
+                        <div class="notif-list" id="notifList"></div>
                     </div>
                 </div>
-
                 <div class="dropdown">
                     <button class="tb-user" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="tb-avatar">MK</span>
+                        <span class="tb-avatar" id="admAvatar">MK</span>
                         <span class="tb-user-meta">
-                            <strong>Maya Chen</strong>
+                            <strong id="admName">Maya Chen</strong>
                             <small>Administrator</small>
                         </span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end tb-user-menu">
                         <li><a class="dropdown-item" href="#" data-section="settings"><i class="fa-regular fa-user"></i> My Profile</a></li>
-                        <li><a class="dropdown-item" href="#" data-section="settings"><i class="fa-solid fa-sliders"></i> Preferences</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-danger" href="#" id="logoutBtn2"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
                     </ul>
@@ -524,8 +516,8 @@
                 <div class="row g-4">
                     <div class="col-lg-4">
                         <div class="panel profile-panel text-center">
-                            <span class="prof-avatar">MK</span>
-                            <h4 class="mt-3 mb-1">Maya Chen</h4>
+                            <span class="prof-avatar" id="profAvatar">MK</span>
+                            <h4 class="mt-3 mb-1" id="profName">Maya Chen</h4>
                             <p class="mb-1">maya.chen@stackly.energy</p>
                             <span class="badge-role"><i class="fa-solid fa-shield-halved"></i> Administrator</span>
                             <div class="prof-stats">
@@ -541,7 +533,7 @@
                             <form id="profileForm" class="p-form" novalidate>
                                 <div class="row g-3">
                                     <div class="col-md-6"><label class="f-label" for="pfName">Full Name</label><input type="text" class="f-input" id="pfName" value="Maya Chen"></div>
-                                    <div class="col-md-6"><label class="f-label" for="pfEmail">Email Address</label><input type="email" class="f-input" id="pfEmail" value="maya.chen@stackly.energy"></div>
+                                    <div class="col-md-6"><label class="f-label" for="pfEmail">Email Address</label><input type="email" class="f-input" id="pfEmail" value="maya.chen@stackly.energy" pattern="[a-zA-Z0-9][a-zA-Z0-9.]*@[a-zA-Z0-9][a-zA-Z0-9.]*\.[a-zA-Z]{2,}"></div>
                                     <div class="col-md-6"><label class="f-label" for="pfPhone">Phone</label><input type="tel" class="f-input" id="pfPhone" value="+1 (800) 555-0102"></div>
                                     <div class="col-md-6"><label class="f-label" for="pfRole">Job Title</label><input type="text" class="f-input" id="pfRole" value="Founder &amp; CEO"></div>
                                 </div>
@@ -554,8 +546,8 @@
                             <form id="passForm" class="p-form" novalidate>
                                 <div class="row g-3">
                                     <div class="col-md-4"><label class="f-label" for="pwCur">Current Password</label><input type="password" class="f-input" id="pwCur" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"></div>
-                                    <div class="col-md-4"><label class="f-label" for="pwNew">New Password</label><input type="password" class="f-input" id="pwNew" placeholder="Min. 8 characters"></div>
-                                    <div class="col-md-4"><label class="f-label" for="pwConf">Confirm Password</label><input type="password" class="f-input" id="pwConf" placeholder="Repeat password"></div>
+                                    <div class="col-md-4"><label class="f-label" for="pwNew">New Password</label><input type="password" class="f-input" id="pwNew" placeholder="Min. 8 characters" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&amp;*]).{8,}" title="Must be at least 8 characters with 1 uppercase, 1 lowercase, 1 number, and 1 special character"></div>
+                                    <div class="col-md-4"><label class="f-label" for="pwConf">Confirm Password</label><input type="password" class="f-input" id="pwConf" placeholder="Repeat password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&amp;*]).{8,}" title="Must be at least 8 characters with 1 uppercase, 1 lowercase, 1 number, and 1 special character"></div>
                                 </div>
                                 <button type="submit" class="btn-adm btn-adm-dark mt-4"><i class="fa-solid fa-lock"></i> Update Password</button>
                             </form>
@@ -605,7 +597,7 @@
                     <div class="modal-body">
                         <div class="row g-3">
                             <div class="col-md-6"><label class="f-label" for="nuName">Full Name *</label><input type="text" class="f-input" id="nuName" required placeholder="Jane Doe"></div>
-                            <div class="col-md-6"><label class="f-label" for="nuEmail">Email Address *</label><input type="email" class="f-input" id="nuEmail" required placeholder="jane@email.com"></div>
+                            <div class="col-md-6"><label class="f-label" for="nuEmail">Email Address *</label><input type="email" class="f-input" id="nuEmail" required placeholder="jane@email.com" pattern="[a-zA-Z0-9][a-zA-Z0-9.]*@[a-zA-Z0-9][a-zA-Z0-9.]*\.[a-zA-Z]{2,}"></div>
                             <div class="col-md-6">
                                 <label class="f-label" for="nuRole">Role</label>
                                 <select class="f-input" id="nuRole"><option value="customer">Customer</option><option value="installer">Installer</option><option value="admin">Admin</option></select>

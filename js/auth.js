@@ -1,11 +1,22 @@
 (function () {
     'use strict';
 
-    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const EMAIL_RE = /^[a-zA-Z0-9][a-zA-Z0-9.]*@[a-zA-Z0-9][a-zA-Z0-9.]*\.[a-zA-Z]{2,}$/;
     const PHONE_RE = /^\+?[0-9\s\-()]{7,18}$/;
+    const PW_SPECIAL = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
     const $ = (sel) => document.querySelector(sel);
     const $$ = (sel) => document.querySelectorAll(sel);
+
+    function validatePassword(v) {
+        if (!v) return 'Password is required';
+        if (v.length < 8) return 'Password must be at least 8 characters';
+        if (!/[a-z]/.test(v)) return 'Password must contain at least 1 lowercase letter';
+        if (!/[A-Z]/.test(v)) return 'Password must contain at least 1 uppercase letter';
+        if (!/[0-9]/.test(v)) return 'Password must contain at least 1 number';
+        if (!PW_SPECIAL.test(v)) return 'Password must contain at least 1 special character';
+        return null;
+    }
 
     function showToast(msg, icon) {
         const old = document.querySelector('.auth-toast');
@@ -79,7 +90,7 @@
         if (v.length >= 12) s++;
         if (/[A-Z]/.test(v) && /[a-z]/.test(v)) s++;
         if (/[0-9]/.test(v)) s++;
-        if (/[^A-Za-z0-9]/.test(v)) s++;
+        if (PW_SPECIAL.test(v)) s++;
         return Math.min(s, 4);
     }
 
@@ -132,6 +143,11 @@
         }
     }
 
+    function emailToName(email) {
+        var prefix = email.trim().split('@')[0];
+        return prefix.replace(/[._-]/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+    }
+
     function redirectByRole(role) {
         window.location.href = role === 'admin' ? 'admin.html' : 'user-dashboard.html';
     }
@@ -158,9 +174,22 @@
             if (!pass.value) {
                 setErr(pass, 'Password is required');
                 ok = false;
-            } else if (pass.value.length < 8) {
-                setErr(pass, 'Password must be at least 8 characters');
+            } else {
+                const pwErr = validatePassword(pass.value);
+                if (pwErr) { setErr(pass, pwErr); ok = false; }
+            }
+            const rememberChk = $('#rememberMe');
+            const rememberErr = $('#rememberErr');
+            if (!rememberChk.checked) {
+                rememberChk.classList.add('is-invalid');
+                if (rememberErr) {
+                    rememberErr.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i>You must agree to Remember Me';
+                    rememberErr.classList.add('show');
+                }
                 ok = false;
+            } else {
+                rememberChk.classList.remove('is-invalid');
+                if (rememberErr) rememberErr.classList.remove('show');
             }
 
             if (!ok) {
@@ -169,9 +198,9 @@
             }
 
             const role = getRole();
-            const remember = $('#rememberMe').checked;
+            const remember = rememberChk.checked;
             setLoading($('#loginBtn'), 'Signing you in...');
-            saveSession(email.value.trim().split('@')[0], role, remember);
+            saveSession(emailToName(email.value), role, remember);
 
             setTimeout(() => {
                 showToast('Login successful. Redirecting...', 'fa-right-to-bracket');
@@ -233,9 +262,9 @@
             if (!pass.value) {
                 setErr(pass, 'Password is required');
                 ok = false;
-            } else if (pass.value.length < 8) {
-                setErr(pass, 'Use at least 8 characters');
-                ok = false;
+            } else {
+                const pwErr = validatePassword(pass.value);
+                if (pwErr) { setErr(pass, pwErr); ok = false; }
             }
             if (conf.value !== pass.value || !conf.value) {
                 setErr(conf, 'Passwords do not match');
@@ -267,6 +296,14 @@
         initPwEyes();
         initStrength();
         watchClear(['#lgEmail', '#lgPass', '#suName', '#suEmail', '#suPhone', '#suPass', '#suConf']);
+        const rememberChk = $('#rememberMe');
+        if (rememberChk) {
+            rememberChk.addEventListener('change', () => {
+                rememberChk.classList.remove('is-invalid');
+                const err = $('#rememberErr');
+                if (err) err.classList.remove('show');
+            });
+        }
         initLogin();
         initSignup();
     });

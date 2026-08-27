@@ -5,6 +5,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         initPageHero();
         initSpotlights();
+        initFilterBars();
         initSolutionModal();
         initEstimator();
         initContactForm();
@@ -33,6 +34,39 @@
                 var rect = card.getBoundingClientRect();
                 card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
                 card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+            });
+        });
+    }
+
+    function initFilterBars() {
+        var bars = document.querySelectorAll('.filter-bar[data-filter-group]');
+        Array.prototype.forEach.call(bars, function (bar) {
+            var gridId = bar.getAttribute('data-filter-group');
+            var grid = document.getElementById(gridId);
+            if (!grid) return;
+            var tabs = bar.querySelectorAll('.tech-tab[data-filter]');
+            var cards = grid.querySelectorAll('.post-card[data-category]');
+            Array.prototype.forEach.call(tabs, function (tab) {
+                tab.addEventListener('click', function () {
+                    var filter = tab.getAttribute('data-filter');
+                    Array.prototype.forEach.call(tabs, function (t) {
+                        t.classList.remove('active');
+                        t.setAttribute('aria-selected', 'false');
+                    });
+                    tab.classList.add('active');
+                    tab.setAttribute('aria-selected', 'true');
+                    Array.prototype.forEach.call(cards, function (card) {
+                        var match = filter === 'all' || card.getAttribute('data-category') === filter;
+                        card.style.display = match ? '' : 'none';
+                        card.classList.toggle('fade-up', match);
+                    });
+                    if (animOK && typeof gsap !== 'undefined') {
+                        var visible = grid.querySelectorAll('.post-card[data-category]:not([style*="display: none"])');
+                        gsap.fromTo(visible, { opacity: 0, y: 30 }, {
+                            opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: 'power3.out'
+                        });
+                    }
+                });
             });
         });
     }
@@ -176,7 +210,7 @@
             var required = form.querySelectorAll('[required]');
             Array.prototype.forEach.call(required, function (field) {
                 var ok = field.value.trim() !== '';
-                if (ok && field.type === 'email') ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim());
+                if (ok && field.type === 'email') ok = /^[a-zA-Z0-9][a-zA-Z0-9.]*@[a-zA-Z0-9][a-zA-Z0-9.]*\.[a-zA-Z]{2,}$/.test(field.value.trim());
                 field.classList.toggle('is-invalid', !ok);
                 if (!ok) valid = false;
             });

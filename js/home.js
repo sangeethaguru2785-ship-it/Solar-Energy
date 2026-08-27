@@ -23,7 +23,7 @@
             .to(lines, { yPercent: 0, duration: 1.15, stagger: 0.13 }, '-=0.35')
             .fromTo('.hero-sub', { y: 34 }, { y: 0, opacity: 1, duration: 0.9 }, '-=0.6')
             .fromTo('.hero-cta', { y: 30 }, { y: 0, opacity: 1, duration: 0.9 }, '-=0.65')
-            .fromTo('.hero-orb-container', { scale: 0.55, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.3, ease: 'elastic.out(1, 0.72)' }, '-=1')
+            .fromTo('.hero-video-card', { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.9, ease: 'power2.out' }, '-=1')
             .fromTo('.scroll-indicator', { opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.4');
     }
 

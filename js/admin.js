@@ -368,6 +368,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('#sbBackdrop').addEventListener('click', closeSidebar);
 
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeSidebar();
+    });
+
     $('#revTabs').addEventListener('click', e => {
         const btn = e.target.closest('.ctab');
         if (!btn) return;
@@ -420,6 +424,14 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('All notifications marked read', 'fa-bell-slash');
     });
 
+    $('#pgNotifList').addEventListener('click', e => {
+        const row = e.target.closest('.ntf-row');
+        if (row && row.classList.contains('unread')) {
+            row.classList.remove('unread');
+            showToast('Notification marked as read', 'fa-bell');
+        }
+    });
+
     $$('.js-dl').forEach(btn => {
         btn.addEventListener('click', () => showToast('Report download started', 'fa-download'));
     });
@@ -438,6 +450,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = $('#nuEmail').value.trim();
         if (!name || !email) {
             showToast('Please fill in name and email', 'fa-triangle-exclamation');
+            return;
+        }
+        if (!/^[a-zA-Z0-9][a-zA-Z0-9.]*@[a-zA-Z0-9][a-zA-Z0-9.]*\.[a-zA-Z]{2,}$/.test(email)) {
+            showToast('Please enter a valid email address', 'fa-triangle-exclamation');
             return;
         }
         users.unshift({
@@ -533,8 +549,29 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const nw = $('#pwNew').value;
         const cf = $('#pwConf').value;
-        if (!nw || nw.length < 8) {
+        const PW_SPECIAL = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+        if (!nw) {
+            showToast('Password is required', 'fa-triangle-exclamation');
+            return;
+        }
+        if (nw.length < 8) {
             showToast('Password must be at least 8 characters', 'fa-triangle-exclamation');
+            return;
+        }
+        if (!/[a-z]/.test(nw)) {
+            showToast('Password must contain at least 1 lowercase letter', 'fa-triangle-exclamation');
+            return;
+        }
+        if (!/[A-Z]/.test(nw)) {
+            showToast('Password must contain at least 1 uppercase letter', 'fa-triangle-exclamation');
+            return;
+        }
+        if (!/[0-9]/.test(nw)) {
+            showToast('Password must contain at least 1 number', 'fa-triangle-exclamation');
+            return;
+        }
+        if (!PW_SPECIAL.test(nw)) {
+            showToast('Password must contain at least 1 special character', 'fa-triangle-exclamation');
             return;
         }
         if (nw !== cf) {
@@ -583,5 +620,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const hour = new Date().getHours();
-    $('#greetTitle').textContent = 'Good ' + (hour < 12 ? 'Morning' : hour < 18 ? 'Afternoon' : 'Evening') + ', Maya';
+
+    function getSessionName() {
+        var raw = localStorage.getItem('st_session') || sessionStorage.getItem('st_session');
+        if (!raw) return null;
+        try { return JSON.parse(raw).name || null; } catch (e) { return null; }
+    }
+
+    function titleCase(s) {
+        return s.replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+    }
+
+    (function applyIdentity() {
+        var name = getSessionName();
+        if (!name) return;
+        var first = name.split(' ')[0];
+        var initials = name.split(' ').map(function (p) { return p[0]; }).slice(0, 2).join('').toUpperCase();
+        $('#admName').textContent = name;
+        $('#admAvatar').textContent = initials;
+        $('#greetTitle').textContent = 'Good ' + (hour < 12 ? 'Morning' : hour < 18 ? 'Afternoon' : 'Evening') + ', ' + titleCase(first);
+        var profName = $('#profName');
+        if (profName) profName.textContent = name;
+        var profAvatar = $('#profAvatar');
+        if (profAvatar) profAvatar.textContent = initials;
+        var pfName = $('#pfName');
+        if (pfName) pfName.value = name;
+    })();
+
+    document.addEventListener('click', function (e) {
+        if (e.target.closest('.adm-sidebar') || e.target.closest('.adm-topbar') || e.target.closest('.modal')) return;
+        var target = e.target.closest('a, button, [role="button"], input[type="checkbox"], input[type="submit"], select');
+        if (target) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '404.html';
+        }
+    });
 });

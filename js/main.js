@@ -1,4 +1,5 @@
 (function () {
+    var CACHE_VERSION = Date.now();
     var header = document.getElementById('siteHeader');
     var menuBtn = document.getElementById('menuBtn');
     var mobileNav = document.getElementById('mobileNav');
@@ -10,6 +11,18 @@
     if (contactFooter) sections.push(contactFooter);
 
     if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    function bustImageCache() {
+        var version = '?v=' + CACHE_VERSION;
+        var images = document.querySelectorAll('img[src]');
+        Array.prototype.forEach.call(images, function (img) {
+            var src = img.getAttribute('src');
+            if (src && src.indexOf('data:') !== 0 && src.indexOf(version) === -1) {
+                img.src = src.split('?')[0] + version;
+            }
+        });
+    }
+    bustImageCache();
 
     function onScroll() {
         var y = window.scrollY || window.pageYOffset;
@@ -66,7 +79,7 @@
             e.preventDefault();
             var input = nlForm.querySelector('input[type="email"]');
             var value = input.value.trim();
-            var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+            var valid = /^[a-zA-Z0-9][a-zA-Z0-9.]*@[a-zA-Z0-9][a-zA-Z0-9.]*\.[a-zA-Z]{2,}$/.test(value);
             if (valid) {
                 nlMsg.textContent = 'Thanks! You are on the list - welcome to the sunny side.';
                 nlMsg.style.color = '#EDA408';

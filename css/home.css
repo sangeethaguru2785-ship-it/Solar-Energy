@@ -136,13 +136,18 @@ html.anim .hero-title {
         justify-content: center;
     }
 
-    .hero-orb-container {
+    .hero-video-card {
         width: 270px;
         height: 270px;
     }
+
+    .hero-video {
+        width: 238px;
+        height: 238px;
+    }
 }
 
-.hero-orb-container {
+.hero-video-card {
     position: relative;
     width: 350px;
     height: 350px;
@@ -152,86 +157,62 @@ html.anim .hero-title {
     justify-content: center;
 }
 
-.hero-core-orb {
-    width: 124px;
-    height: 124px;
+.hero-video-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 32px;
     background: linear-gradient(135deg, var(--primary-green), var(--accent-orange));
-    border-radius: 50%;
-    display: flex;
+    animation: heroCardGlow 4s infinite ease-in-out;
+    opacity: 0.35;
+    z-index: 0;
+}
+
+@keyframes heroCardGlow {
+    0%, 100% { box-shadow: 0 0 22px rgba(255, 201, 60, 0.2); }
+    50% { box-shadow: 0 0 36px rgba(255, 201, 60, 0.35); }
+}
+
+.hero-video {
+    position: relative;
+    width: 310px;
+    height: 310px;
+    object-fit: cover;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    outline: 1px solid rgba(255, 255, 255, 0.04);
+    outline-offset: 1px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    background: #0d1b12;
+    animation: heroVideoFloat 6s infinite ease-in-out;
+    z-index: 1;
+}
+
+@keyframes heroVideoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+}
+
+.hero-video-badge {
+    position: absolute;
+    top: 18px;
+    right: -14px;
+    z-index: 2;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    font-size: 50px;
-    color: var(--brand-deep);
-    box-shadow: 0 0 50px rgba(255, 201, 60, 0.65);
-    z-index: 5;
-    animation: heroOrbPulse 3s infinite ease-in-out;
+    gap: 8px;
+    background: var(--brand-deep, #10231a);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
 }
 
-@keyframes heroOrbPulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 0 50px rgba(255, 201, 60, 0.6); }
-    50% { transform: scale(1.08); box-shadow: 0 0 74px rgba(255, 201, 60, 0.85), 0 0 28px rgba(255, 255, 255, 0.55); }
-}
-
-.hero-orb-ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 2px dashed rgba(255, 255, 255, 0.55);
-    pointer-events: none;
-}
-
-.hero-ring-1 {
-    width: 200px;
-    height: 200px;
-    border-color: rgba(255, 255, 255, 0.8);
-    animation: heroRotateCw 15s linear infinite;
-}
-
-.hero-ring-2 {
-    width: 280px;
-    height: 280px;
-    border-color: rgba(255, 201, 60, 0.75);
-    animation: heroRotateCcw 25s linear infinite;
-}
-
-.hero-ring-3 {
-    width: 350px;
-    height: 350px;
-    border-color: rgba(237, 164, 8, 0.45);
-    animation: heroRotateCw 40s linear infinite;
-}
-
-@keyframes heroRotateCw {
-    to { transform: rotate(360deg); }
-}
-
-@keyframes heroRotateCcw {
-    to { transform: rotate(-360deg); }
-}
-
-.hero-particle {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: var(--white);
-    border-radius: 50%;
-    filter: blur(1px);
-    opacity: 0.9;
-    box-shadow: 0 0 10px var(--white);
-}
-
-.hp-1 { top: 15%; left: 15%; background: var(--accent-orange); box-shadow: 0 0 12px var(--accent-orange); animation: floatParticle1 6s infinite ease-in-out; }
-.hp-2 { top: 75%; left: 85%; animation: floatParticle2 8s infinite ease-in-out; }
-.hp-3 { top: 85%; left: 25%; animation: floatParticle1 7s infinite ease-in-out 1s; }
-.hp-4 { top: 10%; left: 75%; animation: floatParticle2 9s infinite ease-in-out 1.5s; }
-
-@keyframes floatParticle1 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-30px, -40px) scale(1.25); }
-}
-
-@keyframes floatParticle2 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(40px, -30px) scale(0.8); }
+.hero-video-badge i {
+    color: var(--accent-orange);
 }
 
 .scroll-indicator {
@@ -769,6 +750,56 @@ html.anim .hero-title {
     margin-top: 20px;
 }
 
+.tech-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.tech-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 24px 16px;
+    background: var(--white);
+    border: 1.5px solid var(--border-color);
+    border-radius: 18px;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-tab i {
+    font-size: 22px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: var(--bg-alt);
+    color: var(--accent-green);
+    transition: var(--transition);
+}
+
+.tech-tab:hover {
+    border-color: rgba(255, 201, 60, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(14, 44, 26, 0.08);
+}
+
+.tech-tab:hover i {
+    background: rgba(255, 201, 60, 0.15);
+    color: var(--accent-orange);
+}
+
 .tech-showcase-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1142,6 +1173,10 @@ html.anim .hero-title {
         padding: 28px;
     }
 
+    .tech-nav {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .parallax-section {
         padding: 100px 0;
     }
@@ -1186,20 +1221,21 @@ html.anim .hero-title {
         width: 100%;
     }
 
-    .hero-orb-container {
+    .hero-video-card {
         width: 250px;
         height: 250px;
     }
 
-    .hero-core-orb {
-        width: 92px;
-        height: 92px;
-        font-size: 38px;
+    .hero-video {
+        width: 220px;
+        height: 220px;
     }
 
-    .hero-ring-1 { width: 150px; height: 150px; }
-    .hero-ring-2 { width: 200px; height: 200px; }
-    .hero-ring-3 { width: 250px; height: 250px; }
+    .hero-video-badge {
+        font-size: 12px;
+        padding: 8px 13px;
+        right: 6px;
+    }
 
     .scroll-indicator {
         display: none;
@@ -1291,6 +1327,15 @@ html.anim .hero-title {
         height: 220px;
         width: 300px;
     }
+
+    .tech-nav {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .tech-tab {
+        padding: 18px 12px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1304,5 +1349,21 @@ html.anim .hero-title {
 
     .hero-title {
         font-size: 34px;
+    }
+
+    .tech-nav {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .tech-tab {
+        padding: 16px 10px;
+        font-size: 13px;
+    }
+
+    .tech-tab i {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
     }
 }

@@ -22,9 +22,14 @@
         const name = getSessionName();
         if (!name) return;
         const first = name.split(' ')[0];
+        const initials = name.split(' ').map(p => p[0]).slice(0, 2).join('').toUpperCase();
         $('#udName').textContent = name;
-        $('#udAvatar').textContent = name.split(' ').map(p => p[0]).slice(0, 2).join('').toUpperCase();
+        $('#udAvatar').textContent = initials;
         $('#greetLine').innerHTML = 'Good ' + timeWord() + ', <span>' + titleCase(first) + '</span>';
+        const profView = $('#profNameView');
+        if (profView) profView.textContent = name;
+        const profInput = $('#udProfName');
+        if (profInput) profInput.value = name;
     }
 
     function timeWord() {
@@ -292,7 +297,13 @@
             e.preventDefault();
             const nw = $('#udPwNew').value;
             const cf = $('#udPwConf').value;
-            if (!nw || nw.length < 8) return showToast('Password must be at least 8 characters', 'fa-triangle-exclamation');
+            const PW_SPECIAL = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+            if (!nw) return showToast('Password is required', 'fa-triangle-exclamation');
+            if (nw.length < 8) return showToast('Password must be at least 8 characters', 'fa-triangle-exclamation');
+            if (!/[a-z]/.test(nw)) return showToast('Password must contain at least 1 lowercase letter', 'fa-triangle-exclamation');
+            if (!/[A-Z]/.test(nw)) return showToast('Password must contain at least 1 uppercase letter', 'fa-triangle-exclamation');
+            if (!/[0-9]/.test(nw)) return showToast('Password must contain at least 1 number', 'fa-triangle-exclamation');
+            if (!PW_SPECIAL.test(nw)) return showToast('Password must contain at least 1 special character', 'fa-triangle-exclamation');
             if (nw !== cf) return showToast('Passwords do not match', 'fa-triangle-exclamation');
             e.target.reset();
             showToast('Password updated securely', 'fa-lock');
@@ -347,5 +358,15 @@
         initSidebar();
         bindRouter();
         bindActions();
+
+        document.addEventListener('click', function (e) {
+            if (e.target.closest('.ud-sidebar') || e.target.closest('.ud-topbar') || e.target.closest('.modal')) return;
+            var target = e.target.closest('a, button, [role="button"], input[type="checkbox"], input[type="submit"], select');
+            if (target) {
+                e.preventDefault();
+                e.stopPropagation();
+                window.location.href = '404.html';
+            }
+        });
     });
 })();

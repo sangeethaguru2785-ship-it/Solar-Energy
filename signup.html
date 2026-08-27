@@ -77,7 +77,7 @@
 
                     <div class="f-group">
                         <label class="f-label" for="suEmail">Email Address</label>
-                        <input type="email" id="suEmail" class="f-control" placeholder="you@example.com" autocomplete="email">
+                        <input type="email" id="suEmail" class="f-control" placeholder="you@example.com" autocomplete="email" pattern="[a-zA-Z0-9][a-zA-Z0-9.]*@[a-zA-Z0-9][a-zA-Z0-9.]*\.[a-zA-Z]{2,}">
                         <span class="err-msg"></span>
                     </div>
 
@@ -90,7 +90,7 @@
                     <div class="f-group">
                         <label class="f-label" for="suPass">Password</label>
                         <div class="pw-wrap">
-                            <input type="password" id="suPass" class="f-control" placeholder="Minimum 8 characters" autocomplete="new-password">
+                            <input type="password" id="suPass" class="f-control" placeholder="Minimum 8 characters" autocomplete="new-password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&amp;*]).{8,}" title="Must be at least 8 characters with 1 uppercase, 1 lowercase, 1 number, and 1 special character">
                             <button type="button" class="pw-eye" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
                         </div>
                         <div class="strength">
@@ -103,7 +103,7 @@
                     <div class="f-group">
                         <label class="f-label" for="suConf">Confirm Password</label>
                         <div class="pw-wrap">
-                            <input type="password" id="suConf" class="f-control" placeholder="Re-enter your password" autocomplete="new-password">
+                            <input type="password" id="suConf" class="f-control" placeholder="Re-enter your password" autocomplete="new-password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&amp;*]).{8,}" title="Must be at least 8 characters with 1 uppercase, 1 lowercase, 1 number, and 1 special character">
                             <button type="button" class="pw-eye" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
                         </div>
                         <span class="err-msg"></span>
@@ -112,7 +112,7 @@
                     <div class="terms-wrap">
                         <label class="terms-row">
                             <input type="checkbox" id="agreeTerms">
-                            <span>I agree to the <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a> of Stackly Solar Energy.</span>
+                            <span>I agree to the <a href="404.html">Terms &amp; Conditions</a> and <a href="404.html">Privacy Policy</a> of Stackly Solar Energy.</span>
                         </label>
                         <span class="err-msg"></span>
                     </div>

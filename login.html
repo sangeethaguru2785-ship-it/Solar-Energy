@@ -71,14 +71,14 @@
                 <form id="loginForm" novalidate>
                     <div class="f-group">
                         <label class="f-label" for="lgEmail">Email Address</label>
-                        <input type="email" id="lgEmail" class="f-control" placeholder="you@example.com" autocomplete="email">
+                        <input type="email" id="lgEmail" class="f-control" placeholder="you@example.com" autocomplete="email" pattern="[a-zA-Z0-9][a-zA-Z0-9.]*@[a-zA-Z0-9][a-zA-Z0-9.]*\.[a-zA-Z]{2,}">
                         <span class="err-msg"></span>
                     </div>
 
                     <div class="f-group">
                         <label class="f-label" for="lgPass">Password</label>
                         <div class="pw-wrap">
-                            <input type="password" id="lgPass" class="f-control" placeholder="Enter your password" autocomplete="current-password">
+                            <input type="password" id="lgPass" class="f-control" placeholder="Enter your password" autocomplete="current-password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&amp;*]).{8,}" title="Must be at least 8 characters with 1 uppercase, 1 lowercase, 1 number, and 1 special character">
                             <button type="button" class="pw-eye" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
                         </div>
                         <span class="err-msg"></span>
@@ -88,7 +88,8 @@
                         <label class="remember">
                             <input type="checkbox" id="rememberMe"> Remember me
                         </label>
-                        <a href="#" class="forgot-link" data-bs-toggle="modal" data-bs-target="#forgotModal">Forgot password?</a>
+                        <span class="err-msg" id="rememberErr"></span>
+                        <a href="404.html" class="forgot-link">Forgot password?</a>
                     </div>
 
                     <button type="submit" id="loginBtn" class="btn-auth">
@@ -112,7 +113,7 @@
                 <form id="forgotForm" novalidate>
                     <div class="f-group">
                         <label class="f-label" for="fpEmail">Email Address</label>
-                        <input type="email" id="fpEmail" class="f-control" placeholder="you@example.com">
+                        <input type="email" id="fpEmail" class="f-control" placeholder="you@example.com" pattern="[a-zA-Z0-9][a-zA-Z0-9.]*@[a-zA-Z0-9][a-zA-Z0-9.]*\.[a-zA-Z]{2,}">
                         <span class="err-msg"></span>
                     </div>
                     <button type="submit" class="btn-auth">Send Reset Link <i class="fa-solid fa-paper-plane"></i></button>

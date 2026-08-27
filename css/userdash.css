@@ -55,6 +55,27 @@ h1, h2, h3, h4, h5 {
     padding: 13px clamp(18px, 4vw, 44px);
 }
 
+.tb-menu {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--white);
+    color: var(--ink);
+    font-size: 18px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+}
+
+.tb-menu:hover {
+    border-color: var(--solar-deep);
+    color: var(--solar-deep);
+}
+
 .tb-brand {
     display: flex;
     align-items: center;
@@ -78,6 +99,7 @@ h1, h2, h3, h4, h5 {
     display: flex;
     align-items: center;
     gap: 14px;
+    margin-left: auto;
 }
 
 .tb-chip {
@@ -1237,6 +1259,10 @@ section[id] {
 }
 
 @media (max-width: 767px) {
+    .tb-menu {
+        display: flex;
+    }
+
     .stat-grid.three {
         grid-template-columns: 1fr;
     }
